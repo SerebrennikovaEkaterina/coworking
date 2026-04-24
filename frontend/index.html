@@ -36,54 +36,64 @@
         <section class="coworkings">
           <div class="container">
             <h2 class="h2-title">Каталог коворкингов</h2>
-            <div class="view-switcher">
-              <div class="view-indicator"></div>
-              <button class="view-btn active tab" data-view="list">
-                <svg class="svg" viewBox="0 0 24 24">
-                  <rect
-                    x="4"
-                    y="6"
-                    width="16"
-                    height="2"
-                    rx="1"
+            <div class="view-switcher-wrapper flex">
+              <div class="view-switcher">
+                <div class="view-indicator"></div>
+                <button class="view-btn active tab" data-view="list">
+                  <svg class="svg" viewBox="0 0 24 24">
+                    <rect
+                      x="4"
+                      y="6"
+                      width="16"
+                      height="2"
+                      rx="1"
+                      fill="currentColor"
+                    />
+                    <rect
+                      x="4"
+                      y="11"
+                      width="16"
+                      height="2"
+                      rx="1"
+                      fill="currentColor"
+                    />
+                    <rect
+                      x="4"
+                      y="16"
+                      width="16"
+                      height="2"
+                      rx="1"
+                      fill="currentColor"
+                    />
+                  </svg>
+                  <span class="view-btn-text btn-text">списком</span>
+                </button>
+                <button class="view-btn tab" data-view="grid">
+                  <svg
+                    class="svg"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
                     fill="currentColor"
-                  />
-                  <rect
-                    x="4"
-                    y="11"
-                    width="16"
-                    height="2"
-                    rx="1"
+                  >
+                    <rect x="3" y="3" width="7" height="7" rx="1.5" />
+                    <rect x="14" y="3" width="7" height="7" rx="1.5" />
+                    <rect x="3" y="14" width="7" height="7" rx="1.5" />
+                    <rect x="14" y="14" width="7" height="7" rx="1.5" />
+                  </svg>
+                  <span class="view-btn-text btn-text">плиткой</span>
+                </button>
+                <button class="view-btn tab" data-view="map">
+                  <svg
+                    class="svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
                     fill="currentColor"
-                  />
-                  <rect
-                    x="4"
-                    y="16"
-                    width="16"
-                    height="2"
-                    rx="1"
-                    fill="currentColor"
-                  />
-                </svg>
-                <span class="view-btn-text btn-text">списком</span>
-              </button>
-              <button class="view-btn tab" data-view="grid">
-                <svg
-                  class="svg"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <rect x="3" y="3" width="7" height="7" rx="1.5" />
-                  <rect x="14" y="3" width="7" height="7" rx="1.5" />
-                  <rect x="3" y="14" width="7" height="7" rx="1.5" />
-                  <rect x="14" y="14" width="7" height="7" rx="1.5" />
-                </svg>
-                <span class="view-btn-text btn-text">плиткой</span>
-              </button>
-              <button class="view-btn tab" data-view="map">
-                <svg class="svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" d="
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="
                     M12 2
                     C16 2 19 5 19 9
                     C19 13 12 22 12 22
@@ -94,11 +104,14 @@
                     M12 5.8
                     A3.2 3.2 0 1 0 12 12.2
                     A3.2 3.2 0 1 0 12 5.8
-                  "/>
-                </svg>
-                <span class="view-btn-text btn-text">на&#160;карте</span>
-              </button>
+                  "
+                    />
+                  </svg>
+                  <span class="view-btn-text btn-text">на&#160;карте</span>
+                </button>
+              </div>
             </div>
+
             <div class="views">
               <div class="map hidden"></div>
             </div>
