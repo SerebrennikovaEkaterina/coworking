@@ -91,19 +91,38 @@ const tabs = document.querySelectorAll(".tab");
 const cardsContainer = document.querySelector(".cards");
 const mapContainer = document.querySelector(".map");
 
+// 1. загрузка
+const savedView = localStorage.getItem("viewType") || "list";
+applyView(savedView);
+
+// 2. клики
 tabs.forEach((tab) => {
   tab.addEventListener("click", () => {
     const viewType = tab.dataset.view;
 
-    cardsContainer.classList.remove("view-list", "view-grid");
+    applyView(viewType);
 
-    if (viewType === "map") {
-      cardsContainer.classList.add("hidden");
-      mapContainer.classList.remove("hidden");
-    } else {
-      cardsContainer.classList.remove("hidden");
-      mapContainer.classList.add("hidden");
-      cardsContainer.classList.add(`view-${viewType}`);
-    }
+    // сохраняем
+    localStorage.setItem("viewType", viewType);
   });
 });
+
+// 3. функция
+function applyView(viewType) {
+  // активный таб
+  tabs.forEach(t => t.classList.remove("active"));
+  const activeTab = document.querySelector(`[data-view="${viewType}"]`);
+  activeTab?.classList.add("active");
+
+  // сброс
+  cardsContainer.classList.remove("view-list", "view-grid");
+
+  if (viewType === "map") {
+    cardsContainer.classList.add("hidden");
+    mapContainer.classList.remove("hidden");
+  } else {
+    cardsContainer.classList.remove("hidden");
+    mapContainer.classList.add("hidden");
+    cardsContainer.classList.add(`view-${viewType}`);
+  }
+}
