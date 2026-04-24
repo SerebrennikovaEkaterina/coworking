@@ -284,6 +284,17 @@ section:not(:last-child) {
   padding: 8px 16px;
   align-items: center;
   color: var(--dark-gray-text);
+  gap: 4px;
+  border: 0;
+}
+
+.view-btn {
+  display: inline-flex;
+  justify-content: center;
+  height: 40px;
+  padding: 0 16px;
+  gap: 4px; 
+  color: var(--dark-gray-text);
   border: 0;
 }
 
@@ -301,19 +312,20 @@ section:not(:last-child) {
 }
 
 .view-btn .svg {
+  display: block;
   width: 24px;
   height: 24px;
 }
 
 .view-btn[data-view="list"] {
-border-top-left-radius: 8px;
-border-bottom-left-radius: 8px;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
 }
 
 .view-btn[data-view="map"] {
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
-  }
+}
 
 .cards {
   display: flex;
