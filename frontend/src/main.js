@@ -8,6 +8,16 @@ import { arrowIcon } from "./icons.js";
 import { itineraryIcon } from "./icons.js";
 
 const container = document.querySelector(".coworkings .container .cards");
+const hero = document.querySelector(".hero");
+const overlay = document.querySelector(".hero__overlay");
+const FADE_DURATION = 600;
+const HOLD_TIME = 200;
+
+const heroImages = {
+  list: "/images/hero-list.png",
+  grid: "/images/hero-grid.png",
+  map: "/images/hero-map.png",
+};
 
 function createCoworkingCard(coworking) {
   const card = document.createElement("li");
@@ -114,8 +124,12 @@ function applyView(viewType) {
   const activeTab = document.querySelector(`[data-view="${viewType}"]`);
   activeTab?.classList.add("active");
 
-  // сброс
   cardsContainer.classList.remove("view-list", "view-grid");
+
+  // hero.classList.remove("hero--list", "hero--grid", "hero--map");
+  // hero.classList.add(`hero--${viewType}`);
+
+  changeHero(viewType);
 
   if (viewType === "map") {
     cardsContainer.classList.add("hidden");
@@ -125,4 +139,19 @@ function applyView(viewType) {
     mapContainer.classList.add("hidden");
     cardsContainer.classList.add(`view-${viewType}`);
   }
+}
+
+function changeHero(viewType) {
+  overlay.classList.add("is-active");
+
+  setTimeout(() => {
+    // 🔥 ВАЖНО: меняем КЛАСС, а не background
+    hero.classList.remove("hero--list", "hero--grid", "hero--map");
+    hero.classList.add(`hero--${viewType}`);
+
+    setTimeout(() => {
+      overlay.classList.remove("is-active");
+    }, HOLD_TIME);
+
+  }, FADE_DURATION);
 }

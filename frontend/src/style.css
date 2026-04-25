@@ -154,7 +154,7 @@ section:not(:last-child) {
 }
 
 .header {
-  background-color: #47433f;
+  background-color: var(--dark-gray);
   width: 100%;
   min-width: 360px;
 }
@@ -205,7 +205,7 @@ section:not(:last-child) {
   position: relative;
   margin-right: 16px;
   color: white;
-  font-size: var(--big-text);
+  font-size: 20px;
   font-family: var(--primary-font);
   font-weight: 400;
   font-style: normal;
@@ -228,14 +228,48 @@ section:not(:last-child) {
 .hero {
   background-color: #000;
 }
+
 .hero__content {
-  background-image: url(/images/hero-img.png);
+  position: relative;
+  background-image: url(/images/hero-list.png);
   min-height: 184px;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   align-items: flex-start;
   flex-direction: column-reverse;
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: #000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 600ms ease;
+  z-index: 1;
+}
+
+.hero__overlay.is-active {
+  opacity: 1;
+}
+
+/* чтобы текст был поверх */
+.hero__content > *:not(.hero__overlay) {
+  position: relative;
+  z-index: 2;
+}
+
+.hero--list .hero__content {
+  background-image: url("/images/hero-list.png");
+}
+
+.hero--grid .hero__content {
+  background-image: url("/images/hero-grid.png");
+}
+
+.hero--map .hero__content {
+  background-image: url("/images/hero-map.png");
 }
 
 .h1-title {
