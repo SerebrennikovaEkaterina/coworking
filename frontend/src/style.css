@@ -273,6 +273,8 @@ section:not(:last-child) {
 }
 
 .h1-title {
+  position: relative;
+  top: 1px;
   padding: 8px 16px 0 16px;
   margin: 0;
   font-size: 32px;
