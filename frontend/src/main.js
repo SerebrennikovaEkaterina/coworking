@@ -13,6 +13,7 @@ const overlay = document.querySelector(".hero__overlay");
 const FADE_DURATION = 600;
 const HOLD_TIME = 200;
 
+
 const heroImages = {
   list: "/images/hero-list.png",
   grid: "/images/hero-grid.png",
@@ -160,10 +161,26 @@ loadComponent("#nav-container", "/components/nav.html");
 loadComponent("#header-container", "/components/header.html");
 
 function loadComponent(containerSelector, filePath) {
-fetch(filePath)
-.then(res => res.text())
-.then(data => {
-  document.querySelector(containerSelector).innerHTML = data;
-  setActiveLink();
-})
+  fetch(filePath)
+    .then(res => res.text())
+    .then(data => {
+      document.querySelector(containerSelector).innerHTML = data;
+      setActiveLink();
+    })
+}
+
+function setActiveLink() {
+  const links = document.querySelectorAll("nav-link");
+  let currentPage = window.location.pathname.split("/").pop();
+
+  if (currentPage === "") {
+    currentPage = "index.html";
+  }
+
+  links.forEach(link => {
+    if (link.getAttribute("href").includes(currentPage)) {
+      link.classList.add("active")
+    }
+  })
+
 }

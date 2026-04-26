@@ -188,8 +188,20 @@ section:not(:last-child) {
   color: var(--dark-gray);
 }
 
-.nav-link:checked {
+.nav-link.active {
   color: #3261EC;
+}
+
+.nav-label {
+  visibility: hidden;
+  opacity:0;
+  transform: translateY(0.3s);
+}
+
+.nav-label.active .nav-label {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .nav-link .svg {
