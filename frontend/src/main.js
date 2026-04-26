@@ -155,3 +155,15 @@ function changeHero(viewType) {
 
   }, FADE_DURATION);
 }
+
+loadComponent("#nav-container", "/components/nav.html");
+loadComponent("#header-container", "/components/header.html");
+
+function loadComponent(containerSelector, filePath) {
+fetch(filePath)
+.then(res => res.text())
+.then(data => {
+  document.querySelector(containerSelector).innerHTML = data;
+  setActiveLink();
+})
+}
