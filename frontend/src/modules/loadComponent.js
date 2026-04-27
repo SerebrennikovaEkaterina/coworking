@@ -1,3 +1,5 @@
+import { setActiveLink } from "./navigation.js";
+
 export function loadComponent(containerSelector, filePath) {
   fetch(filePath)
     .then(res => res.text())
