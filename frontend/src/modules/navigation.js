@@ -1,15 +1,18 @@
-export function setActiveLink() {
+import { setState } from "./state.js";
+
+export function initNavigation() {
   const links = document.querySelectorAll(".nav-link");
-  let currentPage = window.location.pathname.split("/").pop();
 
-  if (currentPage === "") {
-    currentPage = "index.html";
-  }
+  links.forEach(link => {
+    link.addEventListener("click", () => {
+      const page = link.dataset.page;
 
-  links.forEach((link) => {
-    if (link.getAttribute("href").includes(currentPage)) {
-      link.classList.add("active");
-      console.log(document.querySelectorAll(".nav-link"));
-    }
+      if (!page) return;
+
+      const newState = setState({ page });
+
+      window.location.href = `${page}.html`;
+    });
   });
 }
+

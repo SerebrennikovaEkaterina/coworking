@@ -1,27 +1,34 @@
 // document.querySelector('#app').innerHTML = `
 // `
-
 import { coworkings } from "./data.js";
 import { initCards } from "./modules/cards.js";
+import { createCoworkingCard } from "./modules/createCoworkingCard.js";
 import { initTabs } from "./modules/tabs.js";
-import { initHero } from "./modules/hero.js";
+import { initNavigation } from "./modules/navigation.js";
 import { loadComponent } from "./modules/loadComponent.js";
+import { getState } from "./modules/state.js";
+import { applyState } from "./modules/view.js";
 
 import "./normalize.css";
 import "./style.css";
-import { createCoworkingCard } from "./modules/createCoworkingCard.js";
 
+console.log("🚀 main");
 
-const changeHero = initHero();
+// 1. восстановить состояние
+const state = getState();
 
-if (changeHero) {
-  initTabs(changeHero)
-}
+console.log(state);
 
+// 2. применить UI
+applyState(state);
+
+// 3. инициализация
 initCards(coworkings, createCoworkingCard);
+initTabs();
 
-loadComponent("#nav-container", "/components/nav.html");
+loadComponent("#nav-container", "/components/nav.html")
+  .then(() => {
+    initNavigation();
+  });
+
 loadComponent("#header-container", "/components/header.html");
-
-
-
