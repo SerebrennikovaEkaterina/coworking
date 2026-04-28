@@ -20,7 +20,7 @@ const state = getState();
 console.log(state);
 
 // 2. применить UI
-applyState(state);
+
 
 // 3. инициализация
 initCards(coworkings, createCoworkingCard);
@@ -29,6 +29,7 @@ initTabs();
 loadComponent("#nav-container", "/components/nav.html")
   .then(() => {
     initNavigation();
+    applyState(state);
   });
 
 loadComponent("#header-container", "/components/header.html");

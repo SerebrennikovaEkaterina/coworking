@@ -236,7 +236,7 @@ section:not(:last-child) {
 
 .slogan::before {
   position: absolute;
-  content: url(/images/angle.svg);
+  content: url(/icons/angle.svg);
   width: 4px;
   height: 4px;
   top: -16px;
@@ -245,7 +245,7 @@ section:not(:last-child) {
 
 .slogan::after {
   position: absolute;
-  content: url(/images/angle.svg);
+  content: url(/icons/angle.svg);
   right: -16px;
   bottom: -16px;
   transform: rotate(180deg);
@@ -257,7 +257,7 @@ section:not(:last-child) {
 
 .hero__content {
   position: relative;
-  background-image: url(/images/hero-list.png);
+  background-image: url(/photos/hero-list.png);
   min-height: 184px;
   background-repeat: no-repeat;
   background-position: center;
@@ -287,15 +287,15 @@ section:not(:last-child) {
 }
 
 .hero--list .hero__content {
-  background-image: url("/images/hero-list.png");
+  background-image: url("/photos/hero-list.png");
 }
 
 .hero--grid .hero__content {
-  background-image: url("/images/hero-grid.png");
+  background-image: url("/photos/hero-grid.png");
 }
 
 .hero--map .hero__content {
-  background-image: url("/images/hero-map.png");
+  background-image: url("/photos/hero-map.png");
 }
 
 .h1-title {

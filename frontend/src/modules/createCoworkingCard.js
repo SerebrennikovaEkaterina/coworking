@@ -1,5 +1,5 @@
-import { arrowIcon } from "../icons.js";
-import { itineraryIcon } from "../icons.js";
+import { arrowIcon } from "../assets/icons.js";
+import { itineraryIcon } from "../assets/icons.js";
 
 
 export function createCoworkingCard(coworking) {
