@@ -5,8 +5,140 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>frontend</title>
+    <style>
+      #app {
+        min-height: 100%;
+        display: flex;
+        flex-direction: column;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+      }
+
+      #app.loaded {
+        opacity: 1;
+      }
+      #loader {
+        position: fixed;
+        inset: 0;
+        background: var(--dark-gray);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        transition: opacity 0.4s ease;
+      }
+
+      #loader.hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .loader__content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 64px;
+        padding-bottom: 128px;
+      }
+      .loader__text-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .loader__text {
+        display: inline-block;
+        color: white;
+      }
+
+      .loader__logo {
+        position: relative;
+        color: white;
+      }
+
+      .loader__hello {
+        display: flex;
+        gap: 4px;
+      }
+
+      .loader__logo::after {
+        content: url(/icons/logo-angle.svg);
+        position: absolute;
+        width: 11px;
+        height: 11px;
+        top: -5px;
+        right: -11px;
+        animation: angleMove 1.2s ease-in-out infinite;
+      }
+
+      @keyframes angleMove {
+        0% {
+          transform: translate(0, 0);
+        }
+
+        30% {
+          transform: translate(4px, -4px);
+        }
+
+        60% {
+          transform: translate(6px, -6px);
+        }
+
+        100% {
+          transform: translate(0, 0);
+        }
+      }
+    </style>
   </head>
   <body class="body">
+    <div id="loader">
+      <div class="loader__content">
+        <div class="loader__hello">
+          <div class="loader__text">Добрый день,</div>
+          <div class="loader__text loader__user-name">Екатерина</div>
+        </div>
+        <div class="loader__text-wrapper">
+          <div class="loader__text">Добро пожаловать</div>
+          <div class="loader__text">в твой уютный</div>
+        </div>
+
+        <div class="loader__logo">
+          <svg
+            class="loader__svg"
+            width="108"
+            height="24"
+            viewBox="0 0 108 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M9.95905 11.1156H10.8586L16.1594 0H20.1109L9.12378 22.938H5.20441L8.48126 16.063L0 0H4.11213L9.95905 11.1156Z"
+              fill="currentColor"
+            />
+            <path
+              d="M20.3935 22.938V6.58583H33.1475V9.66992H24.0237V22.938H20.3935Z"
+              fill="currentColor"
+            />
+            <path
+              d="M36.6276 8.57764C38.1269 6.97134 40.1401 6.16819 42.6673 6.16819C45.1946 6.16819 47.1971 6.97134 48.6749 8.57764C50.1741 10.1625 50.9237 12.2186 50.9237 14.7458C50.9237 17.2945 50.1741 19.372 48.6749 20.9783C47.1971 22.5632 45.1946 23.3556 42.6673 23.3556C40.1401 23.3556 38.1269 22.5632 36.6276 20.9783C35.1498 19.372 34.4109 17.2945 34.4109 14.7458C34.4109 12.2186 35.1498 10.1625 36.6276 8.57764ZM39.2298 18.6973C40.0223 19.7468 41.1681 20.2715 42.6673 20.2715C44.1665 20.2715 45.3124 19.7468 46.1048 18.6973C46.8972 17.6265 47.2935 16.3093 47.2935 14.7458C47.2935 13.2038 46.8972 11.908 46.1048 10.8586C45.3124 9.78772 44.1665 9.25228 42.6673 9.25228C41.1681 9.25228 40.0223 9.78772 39.2298 10.8586C38.4374 11.908 38.0412 13.2038 38.0412 14.7458C38.0412 16.3093 38.4374 17.6265 39.2298 18.6973Z"
+              fill="currentColor"
+            />
+            <path
+              d="M52.5734 22.938V19.5005H53.1517C54.2868 19.5005 55.09 19.0507 55.5611 18.1512C56.0323 17.2517 56.2679 15.6025 56.2679 13.2038V6.58583H69.5038V22.938H65.8736V9.66992H59.609V13.3002C59.609 16.834 59.095 19.3291 58.067 20.7855C57.0603 22.2205 55.4219 22.938 53.1517 22.938H52.5734Z"
+              fill="currentColor"
+            />
+            <path
+              d="M75.1236 8.57764C76.6228 6.97134 78.636 6.16819 81.1633 6.16819C83.6905 6.16819 85.693 6.97134 87.1708 8.57764C88.6701 10.1625 89.4197 12.2186 89.4197 14.7458C89.4197 17.2945 88.6701 19.372 87.1708 20.9783C85.693 22.5632 83.6905 23.3556 81.1633 23.3556C78.636 23.3556 76.6228 22.5632 75.1236 20.9783C73.6458 19.372 72.9069 17.2945 72.9069 14.7458C72.9069 12.2186 73.6458 10.1625 75.1236 8.57764ZM77.7258 18.6973C78.5182 19.7468 79.6641 20.2715 81.1633 20.2715C82.6625 20.2715 83.8083 19.7468 84.6008 18.6973C85.3932 17.6265 85.7894 16.3093 85.7894 14.7458C85.7894 13.2038 85.3932 11.908 84.6008 10.8586C83.8083 9.78772 82.6625 9.25228 81.1633 9.25228C79.6641 9.25228 78.5182 9.78772 77.7258 10.8586C76.9334 11.908 76.5371 13.2038 76.5371 14.7458C76.5371 16.3093 76.9334 17.6265 77.7258 18.6973Z"
+              fill="currentColor"
+            />
+            <path
+              d="M104.145 22.938L100.675 16.0951H96.4665V22.938H92.8363V6.58583H96.4665V13.011H100.739L104.016 6.58583H107.743L103.727 14.4567L107.968 22.938H104.145Z"
+              fill="currentColor"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
     <div id="app">
       <div id="header-container"></div>
       <main class="main flex">

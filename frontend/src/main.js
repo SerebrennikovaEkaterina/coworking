@@ -21,15 +21,36 @@ console.log(state);
 
 // 2. применить UI
 
-
 // 3. инициализация
 initCards(coworkings, createCoworkingCard);
 initTabs();
 
-loadComponent("#nav-container", "/components/nav.html")
-  .then(() => {
-    initNavigation();
-    applyState(state);
-  });
+loadComponent("#nav-container", "/components/nav.html").then(() => {
+  initNavigation();
+  applyState(state);
+});
 
 loadComponent("#header-container", "/components/header.html");
+
+const MIN_DISPLAY_TIME = 2000; // 2 секунды
+
+const startTime = Date.now();
+
+const DEBUG_LOADER = false;
+
+window.addEventListener("DOMContentLoaded", () => {
+  const app = document.getElementById("app");
+  const loader = document.getElementById("loader");
+
+  const elapsed = Date.now() - startTime;
+  const remaining = Math.max(0, MIN_DISPLAY_TIME - elapsed);
+
+  if (DEBUG_LOADER) return; // не скрываем
+  
+  setTimeout(() => {
+    app.classList.add("loaded");
+    loader.classList.add("hidden");
+
+    setTimeout(() => loader.remove(), 400);
+  }, remaining);
+});

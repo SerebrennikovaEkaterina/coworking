@@ -60,12 +60,6 @@ button {
   width: 100%;
 }
 
-#app {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
 .main {
   flex-direction: column;
   flex: 1;
@@ -91,6 +85,8 @@ button {
   font-family: var(--secondary-font);
   font-weight: 400;
 }
+
+
 
 @font-face {
   font-family: "Lato";
@@ -178,7 +174,6 @@ section:not(:last-child) {
 .nav-links {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-
 }
 
 .nav-link {
@@ -189,7 +184,7 @@ section:not(:last-child) {
 }
 
 .nav-link.active {
-  color: #3261EC;
+  color: #3261ec;
 }
 
 .nav-label {
@@ -281,7 +276,7 @@ section:not(:last-child) {
 }
 
 /* чтобы текст был поверх */
-.hero__content>*:not(.hero__overlay) {
+.hero__content > *:not(.hero__overlay) {
   position: relative;
   z-index: 2;
 }
@@ -388,7 +383,7 @@ section:not(:last-child) {
   height: 24px;
 }
 
-.view-btn+.view-btn {
+.view-btn + .view-btn {
   border-left: 1px solid var(--dark-gray);
 }
 
@@ -533,13 +528,17 @@ section:not(:last-child) {
   inset: 0;
   border-radius: 50%;
 
-  -webkit-mask: radial-gradient(circle at center,
-      transparent calc(50% - var(--thickness)),
-      #000 calc(50% - var(--thickness) + 1px));
+  -webkit-mask: radial-gradient(
+    circle at center,
+    transparent calc(50% - var(--thickness)),
+    #000 calc(50% - var(--thickness) + 1px)
+  );
 
-  mask: radial-gradient(circle at center,
-      transparent calc(50% - var(--thickness)),
-      #000 calc(50% - var(--thickness) + 1px));
+  mask: radial-gradient(
+    circle at center,
+    transparent calc(50% - var(--thickness)),
+    #000 calc(50% - var(--thickness) + 1px)
+  );
 }
 
 /* фон */
@@ -555,16 +554,20 @@ section:not(:last-child) {
   transform: rotate(0deg);
 
   -webkit-mask: conic-gradient(#000 calc(var(--progress) * 1%), transparent 0),
-    radial-gradient(circle at center,
+    radial-gradient(
+      circle at center,
       transparent calc(50% - var(--thickness)),
-      #000 calc(50% - var(--thickness) + 1px));
+      #000 calc(50% - var(--thickness) + 1px)
+    );
 
   -webkit-mask-composite: source-in;
 
   mask: conic-gradient(#000 calc(var(--progress) * 1%), transparent 0),
-    radial-gradient(circle at center,
+    radial-gradient(
+      circle at center,
       transparent calc(50% - var(--thickness)),
-      #000 calc(50% - var(--thickness) + 1px));
+      #000 calc(50% - var(--thickness) + 1px)
+    );
 
   mask-composite: intersect;
 }
