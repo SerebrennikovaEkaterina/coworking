@@ -12,16 +12,10 @@ import { applyState } from "./modules/view.js";
 import "./normalize.css";
 import "./style.css";
 
-console.log("🚀 main");
-
-// 1. восстановить состояние
 const state = getState();
 
 console.log(state);
 
-// 2. применить UI
-
-// 3. инициализация
 initCards(coworkings, createCoworkingCard);
 initTabs();
 
@@ -32,23 +26,24 @@ loadComponent("#nav-container", "/components/nav.html").then(() => {
 
 loadComponent("#header-container", "/components/header.html");
 
-const MIN_DISPLAY_TIME = 2000; // 2 секунды
-
+const MIN_DISPLAY_TIME = 2000;
 const startTime = Date.now();
 
 const DEBUG_LOADER = false;
 
-window.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("load", () => {
   const app = document.getElementById("app");
   const loader = document.getElementById("loader");
 
   const elapsed = Date.now() - startTime;
+  console.log("on load:", Date.now());
   const remaining = Math.max(0, MIN_DISPLAY_TIME - elapsed);
-
+  console.log("remaining", remaining);
   if (DEBUG_LOADER) return; // не скрываем
-  
+
   setTimeout(() => {
     app.classList.add("loaded");
+    body.style.overflow = "auto";
     loader.classList.add("hidden");
 
     setTimeout(() => loader.remove(), 400);
