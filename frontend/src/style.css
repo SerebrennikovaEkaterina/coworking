@@ -86,8 +86,6 @@ button {
   font-weight: 400;
 }
 
-
-
 @font-face {
   font-family: "Lato";
   src: url("/fonts/Lato/Lato-Regular.woff2") format("woff2"),
@@ -320,6 +318,42 @@ section:not(:last-child) {
   font-weight: 400;
   line-height: 1.25;
   margin: 0 0 8px;
+}
+
+/* search */
+
+.search {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.search__field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 8px 12px;
+
+  background: white;
+}
+
+.search__input {
+  flex: 1;
+  border: none;
+  outline: none;
+}
+
+.search__icon {
+  display: flex;
+}
+
+.search__geo-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
 }
 
 /* coworkings */
