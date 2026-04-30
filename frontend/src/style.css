@@ -177,7 +177,7 @@ section:not(:last-child) {
 .nav-link {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: start;
   color: var(--dark-gray);
 }
 
@@ -186,13 +186,12 @@ section:not(:last-child) {
 }
 
 .nav-label {
-  visibility: hidden;
   opacity: 0;
-  transform: translateY(0.3s);
+  transform: translateY(4px);
+  transition: 0.3s;
 }
 
-.nav-label.active .nav-label {
-  visibility: visible;
+.nav-link.active .nav-label {
   opacity: 1;
   transform: translateY(0);
 }
