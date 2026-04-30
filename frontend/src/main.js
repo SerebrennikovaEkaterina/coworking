@@ -49,20 +49,36 @@ const startTime = Date.now();
 
 const DEBUG_LOADER = false;
 
-window.addEventListener("load", () => {
-  const app = document.getElementById("app");
-  const loader = document.getElementById("loader");
-  const elapsed = Date.now() - startTime;
-  
-  console.log("on load:", Date.now());
-  const remaining = Math.max(0, MIN_DISPLAY_TIME - elapsed);
-  console.log("remaining", remaining);
-  if (DEBUG_LOADER) return; // не скрываем
+const hasVisited = sessionStorage.getItem("hasVisited");
 
-  setTimeout(() => {
-    app.classList.add("loaded");
-    loader.classList.add("hidden");
-    document.body.classList.remove("is-loading");
-    setTimeout(() => loader.remove(), 400);
-  }, remaining);
-});
+if (hasVisited) {
+  // 👉 уже был — сразу показываем приложение
+  document.getElementById("loader")?.remove();
+  document.getElementById("app")?.classList.add("loaded");
+} else {
+  // 👉 первый заход
+  sessionStorage.setItem("hasVisited", "true");
+
+  window.addEventListener("load", () => {
+    const app = document.getElementById("app");
+    const loader = document.getElementById("loader");
+
+    const elapsed = Date.now() - startTime;
+    const remaining = Math.max(0, MIN_DISPLAY_TIME - elapsed);
+
+    console.log("FIRST VISIT");
+    console.log("remaining:", remaining);
+
+    if (DEBUG_LOADER) return;
+
+    setTimeout(() => {
+      app.classList.add("loaded");
+      loader.classList.add("hidden");
+      document.body.classList.remove("is-loading");
+
+      setTimeout(() => loader.remove(), 400);
+    }, remaining);
+  });
+}
+
+
