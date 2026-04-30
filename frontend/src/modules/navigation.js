@@ -9,10 +9,9 @@ export function initNavigation() {
 
       if (!page) return;
 
-      const newState = setState({ page });
+      setState({ page });
 
       window.location.href = `${page}.html`;
     });
   });
 }
-

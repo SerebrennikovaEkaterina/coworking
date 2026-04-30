@@ -6,6 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>frontend</title>
     <style>
+      html,
+      body {
+        height: 100%;
+      }
+      .body.is-loading {
+        overflow: hidden;
+      }
       #app {
         min-height: 100%;
         display: flex;
@@ -18,9 +25,6 @@
         opacity: 1;
       }
 
-      .body {
-        overflow: hidden;
-      }
       #loader {
         position: fixed;
         inset: 0;
@@ -94,7 +98,7 @@
       }
     </style>
   </head>
-  <body class="body">
+  <body class="body" data-current-page="index">
     <div id="loader">
       <div class="loader__content">
         <div class="loader__hello">

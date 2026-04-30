@@ -4,12 +4,9 @@ const DEFAULT_STATE = {
 };
 
 export function getState() {
-  const saved = localStorage.getItem("appState");
-
-  if (!saved) return DEFAULT_STATE;
-
   try {
-    return { ...DEFAULT_STATE, ...JSON.parse(saved) };
+    const saved = JSON.parse(localStorage.getItem("appState"));
+    return { ...DEFAULT_STATE, ...saved };
   } catch {
     return DEFAULT_STATE;
   }
@@ -19,9 +16,9 @@ export function setState(newState) {
   const current = getState();
   const updated = { ...current, ...newState };
 
-  console.log("🔥 setState:", updated);
-
   localStorage.setItem("appState", JSON.stringify(updated));
 
-  return updated; // 👈 важно!
+  console.log("💾 state saved:", updated);
+
+  return updated;
 }

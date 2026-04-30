@@ -3,7 +3,6 @@ import { applyState } from "./view.js";
 
 export function initTabs() {
   const tabs = document.querySelectorAll(".tab");
-  if (!tabs.length) return;
 
   tabs.forEach(tab => {
     tab.addEventListener("click", () => {

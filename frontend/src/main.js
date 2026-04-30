@@ -9,21 +9,39 @@ import { loadComponent } from "./modules/loadComponent.js";
 import { getState } from "./modules/state.js";
 import { applyState } from "./modules/view.js";
 
-import "./normalize.css";
-import "./style.css";
+import './normalize.css';
+import './style.css';
 
 const state = getState();
 
-console.log(state);
+const currentPage =
+  window.location.pathname.split("/").pop().replace(".html", "") || "index";
 
-initCards(coworkings, createCoworkingCard);
-initTabs();
+console.log("REAL PAGE:", currentPage);
+console.log("STATE PAGE:", state.page);
 
+// 👉 если открыли index, но в state другая страница — редиректим
+if (
+  currentPage === "index" &&
+  state.page &&
+  state.page !== "index"
+) {
+  window.location.replace(`${state.page}.html`);
+}
+
+// 👉 только главная
+if (currentPage === "index") {
+  initCards(coworkings, createCoworkingCard);
+  initTabs();
+}
+
+// 👉 nav
 loadComponent("#nav-container", "/components/nav.html").then(() => {
   initNavigation();
   applyState(state);
 });
 
+// 👉 header
 loadComponent("#header-container", "/components/header.html");
 
 const MIN_DISPLAY_TIME = 2000;
@@ -34,8 +52,8 @@ const DEBUG_LOADER = false;
 window.addEventListener("load", () => {
   const app = document.getElementById("app");
   const loader = document.getElementById("loader");
-
   const elapsed = Date.now() - startTime;
+  
   console.log("on load:", Date.now());
   const remaining = Math.max(0, MIN_DISPLAY_TIME - elapsed);
   console.log("remaining", remaining);
@@ -43,9 +61,8 @@ window.addEventListener("load", () => {
 
   setTimeout(() => {
     app.classList.add("loaded");
-    body.style.overflow = "auto";
     loader.classList.add("hidden");
-
+    document.body.classList.remove("is-loading");
     setTimeout(() => loader.remove(), 400);
   }, remaining);
 });
