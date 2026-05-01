@@ -10,11 +10,13 @@ import { getState } from "./modules/state.js";
 import { applyState } from "./modules/view.js";
 import { initSearch } from "./modules/search.js";
 import { renderCards } from "./modules/cards.js";
+import { initFilters } from "./modules/filters.js";
 
-import './normalize.css';
-import './style.css';
+import "./normalize.css";
+import "./style.css";
 
 const state = getState();
+console.log(state);
 
 const currentPage =
   window.location.pathname.split("/").pop().replace(".html", "") || "index";
@@ -23,11 +25,7 @@ console.log("REAL PAGE:", currentPage);
 console.log("STATE PAGE:", state.page);
 
 // 👉 если открыли index, но в state другая страница — редиректим
-if (
-  currentPage === "index" &&
-  state.page &&
-  state.page !== "index"
-) {
+if (currentPage === "index" && state.page && state.page !== "index") {
   window.location.replace(`${state.page}.html`);
 }
 
@@ -45,6 +43,8 @@ if (currentPage === "index") {
     renderCards(filtered, createCoworkingCard);
   });
 }
+
+initFilters();
 
 // 👉 nav
 loadComponent("#nav-container", "/components/nav.html").then(() => {
@@ -91,5 +91,3 @@ if (hasVisited) {
     }, remaining);
   });
 }
-
-
