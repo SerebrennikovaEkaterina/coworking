@@ -24,6 +24,7 @@
 }
 
 html {
+  line-height: 1.25;
   box-sizing: border-box;
   height: 100%;
 }
@@ -40,6 +41,11 @@ a {
 button {
   font-family: inherit;
   font-size: inherit;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 1px solid #ff00b8;
 }
 
 .list-reset {
@@ -276,6 +282,7 @@ section:not(:last-child) {
 /* чтобы текст был поверх */
 .hero__content > *:not(.hero__overlay) {
   position: relative;
+  top: 1px;
   z-index: 2;
 }
 
@@ -325,19 +332,22 @@ section:not(:last-child) {
 .search {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 4px;
 }
 
 .search__field {
   display: flex;
   align-items: center;
   gap: 8px;
-
-  border: 1px solid #ccc;
+  border: 1px solid var(--dark-gray);
   border-radius: 12px;
-  padding: 8px 12px;
-
+  padding: 10px 12px;
   background: white;
+}
+
+.search__label {
+  font-size: var(--small-text);
+  color: var(--dark-gray);
 }
 
 .search__input {
@@ -346,13 +356,24 @@ section:not(:last-child) {
   outline: none;
 }
 
+.search__input[placeholder] {
+  color: var(--light-gray-text);
+}
+
 .search__icon {
   display: flex;
 }
 
 .search__geo-btn {
-  border: none;
-  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  height: 28px;
+  width: 28px;
+  background-color: var(--light-gray-background-20);
+  border: 0;
+  border-radius: 8px;
   cursor: pointer;
 }
 /* filters */
@@ -361,12 +382,52 @@ section:not(:last-child) {
   position: relative;
 }
 
+.filter-actions {
+  width: 100%;
+  justify-content: center;
+  padding: 16px;
+  gap: 16px;
+}
+
+.filters-btns-container {
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.filter-btn {
+  display: flex;
+  gap: 2px;
+  padding: 6px 10px 8px;
+  align-items: center;
+  justify-content: center;
+  color: var(--dark-gray);
+  line-height: 1.25;
+  font-weight: 500;
+  background-color: #fff;
+  border: 0;
+  border-radius: 8px;
+}
+
+.filter-btn__svg-icon {
+  transform: rotate(90deg) translateX(1px);
+}
+
 .filter-dropdown__header {
   width: 100%;
-
   display: flex;
+  padding: 16px;
   justify-content: space-between;
   align-items: center;
+  background-color: var(--dark-gray);
+  border: 0;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  color: white;
+}
+
+.filter-dropdown__content {
+  padding: 0 16px 16px;
 }
 
 .filter-dropdown {
@@ -375,9 +436,13 @@ section:not(:last-child) {
   left: 0;
   opacity: 0;
   visibility: hidden;
+  min-width: 358px;
   pointer-events: none;
+  background-color: white;
+  border-radius: 10px;
   transform: translateY(8px);
   transition: opacity 0.6s ease, transform 0.6s ease, visibility 0.6s;
+  z-index: 10;
 }
 
 .filter-dropdown.is-open {
@@ -385,6 +450,19 @@ section:not(:last-child) {
   visibility: visible;
   pointer-events: auto;
   transform: translateY(0);
+}
+
+.filter-dropdown__info {
+  flex-direction: column;
+  gap: 4px;
+}
+
+.filter-dropdown__title.h3-title {
+  margin: 0;
+}
+
+.filter-dropdown__arrow {
+  transform: rotate(-90deg);
 }
 
 /* coworkings */
@@ -404,7 +482,6 @@ section:not(:last-child) {
   align-self: center;
   justify-content: center;
   margin: 0 0 8px;
-  /* border: 1px solid var(--dark-gray); */
   box-shadow: 0 0 0 1px var(--dark-gray);
   border-radius: 8px;
   background-color: var(--dark-gray);

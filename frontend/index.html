@@ -161,7 +161,7 @@
         <section class="search-section">
           <div class="container">
             <form class="search" id="search__form">
-              <label class="search__label">
+              <label class="search__label" for="search">
                 Поиск по геопозиции или адресу
               </label>
               <div class="search__field">
@@ -181,8 +181,8 @@
                     />
                   </svg>
                 </span>
-
                 <input
+                  id="search"
                   type="text"
                   class="search__input"
                   placeholder="метро, район, адрес"
@@ -210,7 +210,7 @@
         <section class="filters-section">
           <div class="container">
             <h1 class="h2-title">Фильтры</h1>
-            <div class="filters-btns-container">
+            <div class="filters-btns-container flex">
               <div class="filter">
                 <button
                   class="filter-btn button"
@@ -218,7 +218,13 @@
                   aria-expanded="false"
                 >
                   <span class="btn-text">Тип коворкинга</span>
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <svg
+                    class="filter-btn__svg-icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                  >
                     <path
                       d="M6 4L10 8L6 12"
                       stroke="currentColor"
@@ -230,7 +236,9 @@
                 </button>
                 <div class="filter-dropdown">
                   <button class="filter-dropdown__header">
-                    <span class="filter-dropdown__title">Тип коворкинга</span>
+                    <span class="filter-dropdown__title h-title"
+                      >Тип коворкинга</span
+                    >
                     <svg
                       class="filter-dropdown__arrow"
                       width="16"
@@ -249,7 +257,7 @@
                   </button>
                   <div class="filter-dropdown__content">
                     <fieldset>
-                      <label class="filter-dropdown__label">
+                      <label class="filter-dropdown__label flex">
                         <svg
                           class="filter-dropdown__svg-icon"
                           width="45"
@@ -263,19 +271,21 @@
                             fill="black"
                           />
                         </svg>
-                        <span></span>
+                        <div class="filter-dropdown__info flex">
+                          <div class="filter-dropdown__coworking-type-title">
+                            рабочее место
+                          </div>
+                          <div class="filter-dropdown__coworking-type-desc">
+                            рабочее место в общей зоне
+                          </div>
+                        </div>
                         <input type="checkbox" />
-                      </label>
-                      <label>
-                        <input type="checkbox" />
-                        Private office
                       </label>
                     </fieldset>
-                    <div class="filter-actions">
-                      <button type="button">Очистить</button>
-
+                    <div class="filter-actions flex">
                       <button type="button">Применить</button>
-                    </div>
+                      <button type="button">Очистить</button>
+                  </div>
                   </div>
                 </div>
               </div>
@@ -286,7 +296,13 @@
                   aria-expanded="false"
                 >
                   <span class="btn-text">Количество мест</span>
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <svg
+                    class="filter-btn__svg-icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                  >
                     <path
                       d="M6 4L10 8L6 12"
                       stroke="currentColor"
@@ -341,12 +357,10 @@
                       Private office
                     </label>
                   </fieldset>
-
-                  <div class="filter-actions">
-                    <button type="button">Очистить</button>
-
+                  <div class="filter-actions flex">
                     <button type="button">Применить</button>
-                  </div>
+                    <button type="button">Очистить</button>
+                </div>
                 </div>
               </div>
               <div class="filter">
@@ -356,7 +370,13 @@
                   aria-expanded="false"
                 >
                   <span class="btn-text">Удобства</span>
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <svg
+                    class="filter-btn__svg-icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                  >
                     <path
                       d="M6 4L10 8L6 12"
                       stroke="currentColor"
@@ -403,18 +423,15 @@
                       <span></span>
                       <input type="checkbox" />
                     </label>
-
                     <label>
                       <input type="checkbox" />
                       Private office
                     </label>
                   </fieldset>
-
-                  <div class="filter-actions">
-                    <button type="button">Очистить</button>
-
+                  <div class="filter-actions flex">
                     <button type="button">Применить</button>
-                  </div>
+                    <button type="button">Очистить</button>
+                </div>
                 </div>
               </div>
               <div class="filter">
@@ -424,7 +441,13 @@
                   aria-expanded="false"
                 >
                   <span class="btn-text">Срок аренды</span>
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <svg
+                    class="filter-btn__svg-icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                  >
                     <path
                       d="M6 4L10 8L6 12"
                       stroke="currentColor"
@@ -471,17 +494,14 @@
                       <span></span>
                       <input type="checkbox" />
                     </label>
-
                     <label>
                       <input type="checkbox" />
                       Private office
                     </label>
                   </fieldset>
-
                   <div class="filter-actions">
-                    <button type="button">Очистить</button>
-
                     <button type="button">Применить</button>
+                    <button type="button">Очистить</button>
                   </div>
                 </div>
               </div>
@@ -492,7 +512,13 @@
                   aria-expanded="false"
                 >
                   <span class="btn-text">Режим работы</span>
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <svg
+                    class="filter-btn__svg-icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                  >
                     <path
                       d="M6 4L10 8L6 12"
                       stroke="currentColor"
@@ -539,18 +565,15 @@
                       <span></span>
                       <input type="checkbox" />
                     </label>
-
                     <label>
                       <input type="checkbox" />
                       Private office
                     </label>
                   </fieldset>
-
-                  <div class="filter-actions">
-                    <button type="button">Очистить</button>
-
+                  <div class="filter-actions flex">
                     <button type="button">Применить</button>
-                  </div>
+                    <button type="button">Очистить</button>
+                </div>
                 </div>
               </div>
             </div>
