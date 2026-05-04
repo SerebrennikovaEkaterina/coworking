@@ -397,7 +397,7 @@
                       stroke-linejoin="round"></path>
                   </svg>
                 </button>
-                <div class="filter-dropdown">
+                <div class="filter-dropdown is-open">
                   <button type="button" class="filter-dropdown__header">
                     <span class="filter-dropdown__title h-title">Срок аренды</span>
                     <svg class="filter-dropdown__arrow" width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -414,7 +414,7 @@
                           час
                           </div>
                         </div>
-                        <input type="checkbox" name="space-type" value="openspace" />
+                        <input type="radio" name="rent__term" value="hour" />
                       </label>
                       <label class="filter-dropdown__label flex">
                         <div class="filter-dropdown__info flex">
@@ -422,7 +422,7 @@
                           день
                           </div>
                         </div>
-                        <input type="checkbox" name="space-type" value="openspace" />
+                        <input type="radio" name="rent__term" value="day" />
                       </label>
                       <label class="filter-dropdown__label flex">
                         <div class="filter-dropdown__info flex">
@@ -430,7 +430,7 @@
                           неделя
                           </div>
                         </div>
-                        <input type="checkbox" name="space-type" value="openspace" />
+                        <input type="radio" name="rent__term" value="week" />
                       </label>
                       <label class="filter-dropdown__label flex">
                         <div class="filter-dropdown__info flex">
@@ -438,7 +438,7 @@
                           месяц
                           </div>
                         </div>
-                        <input type="checkbox" name="space-type" value="openspace" />
+                        <input type="radio" name="rent__term" value="month" />
                       </label>
                       <label class="filter-dropdown__label flex">
                         <div class="filter-dropdown__info flex">
@@ -446,7 +446,7 @@
                           год
                           </div>
                         </div>
-                        <input type="checkbox" name="space-type" value="openspace" />
+                        <input type="radio" name="rent__term" value="year" />
                       </label>
                     </fieldset>
                     <div class="filter-actions flex">
@@ -481,7 +481,7 @@
                           5/2
                           </div>
                         </div>
-                        <input type="checkbox" name="space-type" value="openspace" />
+                        <input type="radio" name="work_schedule" value="5/2" />
                       </label>
                       <label class="filter-dropdown__label flex">
                         <div class="filter-dropdown__info flex">
@@ -489,7 +489,7 @@
                           24/7
                           </div>
                         </div>
-                        <input type="checkbox" name="space-type" value="openspace" />
+                        <input type="radio" name="work_schedule" value="24/7" />
                       </label>
                     </fieldset>
                     <div class="filter-actions flex">
@@ -501,7 +501,6 @@
               </div>
             </div>
           </div>
-  </div>
   </section>
   </form>
   <section class="coworkings">
@@ -582,6 +581,7 @@
   </section>
   </main>
   <div id="nav-container"></div>
+  </div>
   </div>
   <script type="module" src="/src/main.js"></script>
 </body>
