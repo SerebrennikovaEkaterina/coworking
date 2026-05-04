@@ -451,8 +451,8 @@ section:not(:last-child) {
   align-items: center;
   background-color: var(--dark-gray);
   border: 0;
-  border-top-right-radius: 10px;
-  border-top-left-radius: 10px;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
   color: white;
 }
 
@@ -507,11 +507,14 @@ section:not(:last-child) {
   flex-grow: 1;
 }
 
-.filter-dropdown__label.flex {
+.filter-dropdown__label {
   flex-wrap: nowrap;
   align-items: center;
-  padding: 8px;
-  color: var(--dark-gray);
+  gap: 4px;
+  padding: 8px 0;
+  color: #000;
+  transition: color 600ms ease;
+
 }
 
 .filter-dropdown__label:not(:last-child) {
@@ -523,19 +526,33 @@ section:not(:last-child) {
   flex-shrink: 0;
   height: 45px;
   width: 45px;
+  transition: color 300ms ease;
+}
+
+.filter-dropdown__coworking-type-desc {
+  color: var(--dark-gray);
 }
 
 .filter-dropdown__label:has(input:checked) .label-icon {
   color: #0084FF;
 }
 
+.filter-dropdown__coworking-type-title,
+.filter-dropdown__coworking-type-desc {
+  transition: color 300ms ease;
+}
+
 .filter-dropdown__label:has(input:checked) .filter-dropdown__coworking-type-title {
   color: #0084FF;
 }
 
+.filter-dropdown__label:has(input:checked) .filter-dropdown__coworking-type-desc {
+  color: #000;
+}
+
 .filter-dropdown__seats-number-container {
   justify-content: center;
-  gap: 16px;                                                                      
+  gap: 16px;
   padding: 16px;
   background-color: #f3f4f4;
   border-radius: 8px;
