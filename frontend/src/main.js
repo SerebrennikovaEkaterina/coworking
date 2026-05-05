@@ -1,7 +1,6 @@
 // document.querySelector('#app').innerHTML = `
 // `
 import { coworkings } from "./data.js";
-// import { initCards } from "./modules/cards.js";
 import { createCoworkingCard } from "./modules/createCoworkingCard.js";
 import { initTabs } from "./modules/tabs.js";
 import { initNavigation } from "./modules/navigation.js";
@@ -11,6 +10,7 @@ import { applyState } from "./modules/view.js";
 import { initSearch } from "./modules/search.js";
 import { renderCards } from "./modules/cards.js";
 import { initFilters } from "./modules/filters.js";
+import { initDropdowns } from "./modules/dropdown.js";
 
 import "./normalize.css";
 import "./style.css";
@@ -29,12 +29,6 @@ if (currentPage === "index" && state.page && state.page !== "index") {
   window.location.replace(`${state.page}.html`);
 }
 
-// 👉 только главная
-// if (currentPage === "index") {
-//   initCards(coworkings, createCoworkingCard);
-//   initTabs();
-// }
-
 if (currentPage === "index") {
   renderCards(coworkings, createCoworkingCard);
   initTabs();
@@ -44,7 +38,10 @@ if (currentPage === "index") {
   });
 }
 
-initFilters();
+document.addEventListener("DOMContentLoaded", () => {
+  initDropdowns();
+  initFilters();
+});
 
 // 👉 nav
 loadComponent("#nav-container", "/components/nav.html").then(() => {

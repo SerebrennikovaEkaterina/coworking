@@ -1,47 +1,51 @@
 export function initFilters() {
-  const filters = document.querySelectorAll(".filter");
+  const form = document.querySelector(".catalog-form");
+  if (!form) return;
 
-  if (!filters.length) return;
+  initApplyButtons(form);
+  initClearButtons(form);
+}
 
-  filters.forEach((filter) => {
-    const button = filter.querySelector(".filter-btn");
-    const dropdown = filter.querySelector(".filter-dropdown");
-    const buttonHeader = filter.querySelector(".filter-dropdown__header");
+function initApplyButtons(form) {
+  const buttons = document.querySelectorAll(".apply-btn");
 
-    if (!button || !dropdown) return;
-
-    button.addEventListener("click", (event) => {
-      event.stopPropagation();
-
-      const isOpen = dropdown.classList.contains("is-open");
-
-      closeAllDropdowns();
-
-      if (!isOpen) {
-        dropdown.classList.add("is-open");
-      }
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const filters = getFilters(form);
+      console.log(filters);
     });
-
-    if (buttonHeader) {
-      buttonHeader.addEventListener("click", (event) => {
-        event.stopPropagation();
-        event.preventDefault();
-        dropdown.classList.remove("is-open");
-      });
-    }
-
-    dropdown.addEventListener("click", (event) => {
-      event.stopPropagation();
-    });
-  });
-
-  document.addEventListener("click", () => {
-    closeAllDropdowns();
   });
 }
 
-function closeAllDropdowns() {
-  document.querySelectorAll(".filter-dropdown").forEach((dropdown) => {
-    dropdown.classList.remove("is-open");
+function initClearButtons(form) {
+  const buttons = document.querySelectorAll(".clear-btn");
+
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const dropdown = btn.closest(".filter-dropdown");
+      const inputs = dropdown.querySelectorAll("input");
+
+      inputs.forEach((input) => {
+        if (input.type === "checkbox" || input.type === "radio") {
+          input.checked = false;
+        } else {
+          input.value = "";
+        }
+      });
+    });
   });
+}
+
+function getFilters(form) {
+  const formData = new FormData(form);
+
+  return {
+    spaceType: formData.getAll("space-type"),
+    amenities: formData.getAll("amenities"),
+    rentTerm: formData.get("rent__term"),
+    workSchedule: formData.get("work_schedule"),
+    minSeats: formData.get("seats-min"),
+    maxSeats: formData.get("seats-max"),
+    search: formData.get("search"),
+  };
 }
