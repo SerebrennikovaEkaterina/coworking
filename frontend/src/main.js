@@ -11,36 +11,52 @@ import { initSearch } from "./modules/search.js";
 import { renderCards } from "./modules/cards.js";
 import { initFilters } from "./modules/filters.js";
 import { initDropdowns } from "./modules/dropdown.js";
+import { filterData } from "./modules/filterData.js";
+import { getFilterState } from "./modules/filterState.js";
 
 import "./normalize.css";
 import "./style.css";
 
 const state = getState();
-console.log(state);
 
 const currentPage =
   window.location.pathname.split("/").pop().replace(".html", "") || "index";
 
-console.log("REAL PAGE:", currentPage);
-console.log("STATE PAGE:", state.page);
-
-// 👉 если открыли index, но в state другая страница — редиректим
+// редирект
 if (currentPage === "index" && state.page && state.page !== "index") {
   window.location.replace(`${state.page}.html`);
 }
 
-if (currentPage === "index") {
-  renderCards(coworkings, createCoworkingCard);
-  initTabs();
-
-  initSearch(coworkings, (filtered) => {
-    renderCards(filtered, createCoworkingCard);
-  });
-}
-
+// 👉 ВСЁ что зависит от DOM
 document.addEventListener("DOMContentLoaded", () => {
+  function updateUI() {
+    const state = getFilterState();
+    const result = filterData(coworkings, state);
+
+    renderCards(result, createCoworkingCard);
+  }
+
+  initSearch(updateUI);
+
+  updateUI(); // первый рендер
+  const form = document.querySelector(".catalog-form");
+
+  if (form) {
+    form.addEventListener("submit", (e) => e.preventDefault());
+  }
+
+  if (currentPage === "index") {
+    renderCards(coworkings, createCoworkingCard);
+
+    initTabs();
+
+    initSearch(coworkings, (filtered) => {
+      renderCards(filtered, createCoworkingCard);
+    });
+  }
+
   initDropdowns();
-  initFilters();
+  initFilters(updateUI);
 });
 
 // 👉 nav
