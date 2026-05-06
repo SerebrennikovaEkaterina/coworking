@@ -66,7 +66,7 @@ export function createCoworkingCard(coworking) {
 `;
 
   const btnItineraryTxt = document.createElement("span");
-  btnItineraryTxt.className = "btn-text itinerary__btn";
+  btnItineraryTxt.className = "btn-text itinerary__btn-text";
   btnItineraryTxt.textContent = "маршрут";
   btnItinerary.append(btnItineraryTxt);
 

@@ -694,7 +694,7 @@ section:not(:last-child) {
   align-self: center;
 }
 
-.view-grid .itinerary__btn {
+.view-grid .itinerary__btn-text {
   display: block;
 }
 
@@ -920,12 +920,13 @@ section:not(:last-child) {
   padding: 8px 10px 12px 10px;
   background-color: #f3f4f4;
   border: 0;
-  color: #2aa3ef;
+  color: #3261ec;
   border-radius: 8px;
   flex-wrap: nowrap;
 }
 
-.itinerary__btn {
+.itinerary__btn-text {
+  padding-left: 2px;
   display: none;
 }
 
