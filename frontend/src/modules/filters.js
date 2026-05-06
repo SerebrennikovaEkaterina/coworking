@@ -1,4 +1,5 @@
 import { updateFilterState } from "./filterState.js";
+import { closeAllDropdowns } from "./dropdown.js";
 
 export function initFilters(onChange) {
   const form = document.querySelector(".catalog-form");
@@ -6,6 +7,7 @@ export function initFilters(onChange) {
 
   initApplyButtons(form, onChange);
   initClearButtons(form, onChange);
+  initGlobalButtons(form, onChange);
 }
 
 function initApplyButtons(form, onChange) {
@@ -25,6 +27,7 @@ function initApplyButtons(form, onChange) {
     });
   });
 }
+
 function initClearButtons(form, onChange) {
   const buttons = document.querySelectorAll(".clear-btn");
 
@@ -60,4 +63,37 @@ function getFilters(form) {
     maxSeats: formData.get("seats-max"),
     search: formData.get("search"),
   };
+}
+
+function initGlobalButtons(form, onChange) {
+  const applyBtn = document.querySelector(".apply-all-btn");
+  const clearBtn = document.querySelector(".clear-all-btn");
+
+  if (applyBtn) {
+    applyBtn.addEventListener("click", () => {
+      const filters = getFilters(form);
+
+      updateFilterState(filters);
+      onChange();
+      closeAllDropdowns(); 
+    });
+  }
+
+  if (clearBtn) {
+    clearBtn.addEventListener("click", () => {
+      const inputs = form.querySelectorAll("input");
+
+      inputs.forEach((input) => {
+        if (input.type === "checkbox" || input.type === "radio") {
+          input.checked = false;
+        } else {
+          input.value = "";
+        }
+      });
+
+      updateFilterState(getFilters(form));
+      onChange();
+      closeAllDropdowns(); 
+    });
+  }
 }

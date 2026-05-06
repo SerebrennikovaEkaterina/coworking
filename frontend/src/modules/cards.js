@@ -13,6 +13,16 @@ export function renderCards(data, createCard) {
     if (!container) return;
   
     container.innerHTML = ""; //  очищаем
+
+    if (!data.length) {
+      container.innerHTML = `
+        <div class="empty-state">
+          Ничего не найдено <br/>
+          Попробуйте ослабить фильтры
+        </div>
+      `;
+      return;
+    }
   
     data.forEach(item => {
       const card = createCard(item);

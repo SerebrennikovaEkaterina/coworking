@@ -43,7 +43,7 @@ export function initDropdowns() {
     });
   }
   
-  function closeAllDropdowns() {
+  export function closeAllDropdowns() {
     document.querySelectorAll(".filter-dropdown").forEach((dropdown) => {
       dropdown.classList.remove("is-open");
     });
