@@ -27,45 +27,41 @@ if (currentPage === "index" && state.page && state.page !== "index") {
   window.location.replace(`${state.page}.html`);
 }
 
-// 👉 ВСЁ что зависит от DOM
 document.addEventListener("DOMContentLoaded", () => {
   function updateUI() {
     const state = getFilterState();
     const result = filterData(coworkings, state);
+    console.log("state",state );
+    console.log("result",result );
 
     renderCards(result, createCoworkingCard);
   }
 
+  // одна система
   initSearch(updateUI);
+  initFilters(updateUI);
+  initDropdowns();
 
-  updateUI(); // первый рендер
+  // первый рендер
+  updateUI();
+
+  // форма
   const form = document.querySelector(".catalog-form");
-
   if (form) {
     form.addEventListener("submit", (e) => e.preventDefault());
   }
 
+  // вкладки (не конфликтуют)
   if (currentPage === "index") {
-    renderCards(coworkings, createCoworkingCard);
-
     initTabs();
-
-    initSearch(coworkings, (filtered) => {
-      renderCards(filtered, createCoworkingCard);
-    });
   }
-
-  initDropdowns();
-  initFilters(updateUI);
 });
 
-// 👉 nav
 loadComponent("#nav-container", "/components/nav.html").then(() => {
   initNavigation();
   applyState(state);
 });
 
-// 👉 header
 loadComponent("#header-container", "/components/header.html");
 
 const MIN_DISPLAY_TIME = 2000;

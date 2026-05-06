@@ -1,33 +1,5 @@
 import { updateFilterState } from "./filterState.js";
 
-function getFilters(form) {
-  const formData = new FormData(form);
-
-  return {
-    spaceType: formData.getAll("space-type"),
-    amenities: formData.getAll("amenities"),
-    rentTerm: formData.get("rent__term"),
-    workSchedule: formData.get("work_schedule"),
-  };
-}
-
-export function initFilters(onChange) {
-  const form = document.querySelector(".catalog-form");
-  if (!form) return;
-
-  const applyButtons = document.querySelectorAll(".apply-btn");
-
-  applyButtons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const filters = getFilters(form);
-
-      updateFilterState(filters);
-
-      onChange();
-    });
-  });
-}
-
 export function initFilters(onChange) {
   const form = document.querySelector(".catalog-form");
   if (!form) return;
@@ -37,18 +9,22 @@ export function initFilters(onChange) {
 }
 
 function initApplyButtons(form, onChange) {
-  const buttons = document.querySelectorAll(".apply-btn");
+  const buttons = form.querySelectorAll(".apply-btn"); 
 
   buttons.forEach((btn) => {
     btn.addEventListener("click", () => {
       const filters = getFilters(form);
 
-      updateFilterState(filters); // 🔥 добавили
-      onChange();                 // 🔥 добавили
+      console.log("FILTERS:", filters); 
+
+      updateFilterState(filters);
+      onChange();
+
+      const dropdown = btn.closest(".filter-dropdown");
+      dropdown.classList.remove("is-open"); 
     });
   });
 }
-
 function initClearButtons(form, onChange) {
   const buttons = document.querySelectorAll(".clear-btn");
 
@@ -78,7 +54,7 @@ function getFilters(form) {
   return {
     spaceType: formData.getAll("space-type"),
     amenities: formData.getAll("amenities"),
-    rentTerm: formData.get("rent__term"),
+    rentTerm: formData.get("rent-term"),
     workSchedule: formData.get("work_schedule"),
     minSeats: formData.get("seats-min"),
     maxSeats: formData.get("seats-max"),
