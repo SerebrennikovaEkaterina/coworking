@@ -561,7 +561,6 @@ section:not(:last-child) {
 }
 
 .filters-global-actions {
-  max-width: 600px;
   padding: 8px 0;
   justify-content: center;
   gap: 4px;
@@ -572,11 +571,13 @@ section:not(:last-child) {
   padding: 8px 16px 10px;
   background-color: white;
   border: 1px solid #1c3786;
+  max-width: 300px;
   border-radius: 8px;
   color: #1c3786;
 }
 
 .apply-all-btn {
+  max-width: 300px;
   flex: 1;
 }
 
