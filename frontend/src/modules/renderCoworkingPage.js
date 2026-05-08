@@ -1,4 +1,5 @@
 import { coworkings } from "../data.js";
+import { amenitiesMap } from "./configs/amenitiesMap.js";
 
 export function renderCoworkingPage() {
   const params = new URLSearchParams(window.location.search);
@@ -32,28 +33,87 @@ function renderAboutCoworking(coworking) {
 
   const coworkingAddress = document.querySelector(".address");
   coworkingAddress.textContent = coworking.address;
+
+  const actions = document.querySelector(".about-coworking__actions");
+  const visitLink = document.createElement("a");
+  visitLink.className = "btn-text primary-button";
+  visitLink.textContent = "посетить коворкинг";
+  actions.appendChild(visitLink);
 }
 
 function renderAmenities(coworking) {
-  const amenitiesContainer = document.querySelector(".amenities__container");
+  const container = document.querySelector(".amenities__container");
 
-  if (!amenitiesContainer || !coworking.amenities) return;
+  if (!container) return;
 
-  amenitiesContainer.innerHTML = coworking.amenities
-    .map(
-      (item) => `
-        <div class="coworking-amenity">
-          ${item}
-        </div>
-      `
-    )
+  container.innerHTML = coworking.amenities
+    .map((amenity) => {
+      const amenityData = amenitiesMap[amenity];
+
+      return `
+        <li class="amenity-item flex">
+          <svg class="amenity-icon">
+            <use href="/icons/sprite.svg#${amenityData.icon}"></use>
+          </svg>
+
+          <span>${amenityData.label}</span>
+        </li>
+      `;
+    })
     .join("");
 }
 
 function renderGallery(coworking) {
   const gallery = document.querySelector(".gallery__images-container");
 
+  if (!gallery) return;
+
+  const nextBtn = document.querySelector(".gallery-btn.next");
+  const prevBtn = document.querySelector(".gallery-btn.prev");
+
+  let currentIndex = 0;
+
   gallery.innerHTML = coworking.gallery
     .map((src) => `<img src="${src}" alt="${coworking.title}">`)
     .join("");
+
+  function updateButtons() {
+    const maxIndex = coworking.gallery.length - 1;
+
+    prevBtn.disabled = currentIndex === 0;
+    nextBtn.disabled = currentIndex === maxIndex;
+  }
+
+  function updateSlider() {
+    const slide = gallery.querySelector("img");
+    const slideWidth = slide.clientWidth;
+
+    const gap = parseInt(getComputedStyle(gallery).gap) || 0;
+
+    const offset = currentIndex * (slideWidth + gap);
+
+    gallery.style.transform = `translateX(-${offset}px)`;
+
+    updateButtons();
+  }
+
+  //ВАЖНО: начальное состояние кнопок (до первого рендера)
+  nextBtn.disabled = coworking.gallery.length <= 1;
+  prevBtn.disabled = true;
+
+  nextBtn.addEventListener("click", () => {
+    if (currentIndex < coworking.gallery.length - 1) {
+      currentIndex++;
+      updateSlider();
+    }
+  });
+
+  prevBtn.addEventListener("click", () => {
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateSlider();
+    }
+  });
+
+  updateSlider();
 }

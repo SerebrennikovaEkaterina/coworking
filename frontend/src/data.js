@@ -11,7 +11,7 @@ export const coworkings = [
     workSchedule: "5/2",
     seats: 6,
     cover: "/photos/coworkings/meeting-point/cover.jpg",
-    gallery: ["/photos/coworkings/meeting-point/gallery/gallery-1", "/photos/coworkings/meeting-point/gallery/gallery-2", "/photos/coworkings/meeting-point/gallery/gallery-3", "/photos/coworkings/meeting-point/gallery/gallery-4", "/photos/coworkings/meeting-point/gallery/gallery-5", "/photos/coworkings/meeting-point/gallery/gallery-6",]
+    gallery: ["/photos/coworkings/meeting-point/gallery/gallery-1.webp", "/photos/coworkings/meeting-point/gallery/gallery-2.webp", "/photos/coworkings/meeting-point/gallery/gallery-3.webp", "/photos/coworkings/meeting-point/gallery/gallery-4.webp", "/photos/coworkings/meeting-point/gallery/gallery-5.webp", "/photos/coworkings/meeting-point/gallery/gallery-6.webp",]
   },
   {
     id: 2,
@@ -25,26 +25,27 @@ export const coworkings = [
     workSchedule: "24/7",
     seats: 50,
     cover: "/photos/coworkings/worknation/cover.webp",
-    gallery: ["/photos/coworkings/worknation/gallery/gallery-1.webp", "/photos/coworkings/worknation/gallery/gallery-2.webp", "/photos/coworkings/worknation/gallery/gallery-3.webp", ]
+    gallery: ["/photos/coworkings/worknation/gallery/gallery-1.webp", "/photos/coworkings/worknation/gallery/gallery-2.webp", "/photos/coworkings/worknation/gallery/gallery-3.webp","/photos/coworkings/worknation/gallery/gallery-4.webp", ]
   },
   {
     id: 3,
     title: "SOK",
     price: "от 600 ₽/день",
-    address: "ул. Тверская, д.7",
+    address: "ул. Земляной Вал, д. 8",
     loadPercent: "30%",
     spaceType: ["openspace", "meeting-room"],
     amenities: ["wifi", "printer", "parking"],
     rentTerm: "day",
     workSchedule: "5/2",
     seats: 20,
-
+    cover: "/photos/coworkings/SOK/cover.webp",
+    gallery: ["/photos/coworkings/SOK/gallery/img-1.webp", "/photos/coworkings/SOK/gallery/img-2.webp", "/photos/coworkings/SOK/gallery/img-3.webp", "/photos/coworkings/SOK/gallery/img-4.webp","/photos/coworkings/SOK/gallery/img-5.webp","/photos/coworkings/SOK/gallery/img-6.webp","/photos/coworkings/SOK/gallery/img-7.webp", "/photos/coworkings/SOK/gallery/img-8.webp",]
   },
   {
     id: 4,
-    title: "Open Space Hub",
+    title: "START HUB",
     price: "от 550 ₽/день",
-    address: "ул. Бауманская, д.11",
+    address: "Большая Новодмитровская ул., 36, стр. 12",
     loadPercent: "45%",
     spaceType: ["openspace", "meeting-room"],
     amenities: ["wifi", "coffee"],

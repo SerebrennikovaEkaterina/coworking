@@ -326,14 +326,6 @@ section:not(:last-child) {
   border-bottom: 1px solid #f8f9f9;
 }
 
-.h1-title-coworking-page {
-  font-family: var(--primary-font);
-  margin: 0;
-  font-size: 32px;
-  font-weight: 500;
-  line-height: 1.25;
-}
-
 .h2-title {
   margin: 0 0 16px;
   font-size: 24px;
@@ -503,6 +495,8 @@ section:not(:last-child) {
 }
 
 .filter-dropdown__arrow {
+  width: 16px;
+  height: 16px;
   transform: rotate(-90deg);
 }
 
@@ -941,11 +935,40 @@ section:not(:last-child) {
 }
 
 .primary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 8px;
   padding: 8px 16px 10px;
   color: white;
   border: 0;
   background: linear-gradient(270deg, #1c3786 0%, #3261ec 100%);
+}
+
+.back-link {
+  display: flex;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--dark-gray) transparent;
+  border: 1px solid white;
+  border-radius: 50px;
+  transition: background-color .6s ease;
+}
+
+.back-link__svg-icon {
+  display: block;
+  line-height: 1;
+  color: white;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+}
+
+.back-link svg {
+  transform: rotate(180deg) translateX(2px);
 }
 
 .coworking-page__hero-content {
@@ -959,6 +982,96 @@ section:not(:last-child) {
   flex-direction: column-reverse;
 }
 
+.amenity-item {
+  align-items: center;
+  gap: 4px;
+}
+
+.amenity-icon {
+  fill: currentColor;
+  flex-shrink: 0;
+  height: 32px;
+  width: 32px;
+}
+
+.amenity-icon svg,
+.amenity-icon use {
+  width: 100%;
+  height: 100%;
+}
+
+.about-coworking .container {
+  flex-direction: column;
+  gap: 4px;
+}
+
+.about-coworking .container,
+.amenities .container,
+.gallery .container {
+  padding: 0 16px;
+}
+
+.gallery-window {
+  overflow: hidden;
+}
+
+.gallery__images-container {
+  margin-bottom: 16px;
+  gap: 4px;
+  display: flex;
+  transition: transform 0.6s ease;
+}
+
+.gallery__images-container img {
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.gallery-btn {
+  display: flex;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--dark-gray);
+  border: 0;
+  border-radius: 50px;
+  transition: background-color .6s ease;
+}
+
+.gallery-btn__svg-icon {
+  display: block;
+  line-height: 1;
+  color: white;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+}
+
+.gallery-btn.prev svg {
+  transform: rotate(180deg) translateX(2px);
+}
+
+.gallery-btn.next svg {
+  transform: translateX(2px);
+}
+
+.gallery__btns {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.gallery-btn:disabled {
+  background-color: #B8BCC0;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.gallery-btn:active {
+  background-color: #000;
+}
 
 @media (max-width: 767px) {
   .logo-desktop {
