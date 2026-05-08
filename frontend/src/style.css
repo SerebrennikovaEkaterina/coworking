@@ -315,6 +315,7 @@ section:not(:last-child) {
   top: 1px;
   padding: 8px 16px 0 16px;
   margin: 0;
+  font-family: var(--primary-font);
   font-size: 32px;
   font-weight: 500;
   line-height: 1.25;
@@ -323,6 +324,14 @@ section:not(:last-child) {
   background-color: #f8f9f9;
   border-top-right-radius: 8px;
   border-bottom: 1px solid #f8f9f9;
+}
+
+.h1-title-coworking-page {
+  font-family: var(--primary-font);
+  margin: 0;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.25;
 }
 
 .h2-title {
@@ -938,6 +947,18 @@ section:not(:last-child) {
   border: 0;
   background: linear-gradient(270deg, #1c3786 0%, #3261ec 100%);
 }
+
+.coworking-page__hero-content {
+  position: relative;
+  background-image: url(/photos/coworkings/meeting-point/cover.jpg);
+  min-height: 184px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  align-items: flex-start;
+  flex-direction: column-reverse;
+}
+
 
 @media (max-width: 767px) {
   .logo-desktop {

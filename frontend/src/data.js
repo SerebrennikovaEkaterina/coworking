@@ -10,6 +10,8 @@ export const coworkings = [
     rentTerm: "day",
     workSchedule: "5/2",
     seats: 6,
+    cover: "/photos/coworkings/meeting-point/cover.jpg",
+    gallery: ["/photos/coworkings/meeting-point/gallery/gallery-1", "/photos/coworkings/meeting-point/gallery/gallery-2", "/photos/coworkings/meeting-point/gallery/gallery-3", "/photos/coworkings/meeting-point/gallery/gallery-4", "/photos/coworkings/meeting-point/gallery/gallery-5", "/photos/coworkings/meeting-point/gallery/gallery-6",]
   },
   {
     id: 2,
@@ -22,18 +24,21 @@ export const coworkings = [
     rentTerm: "month",
     workSchedule: "24/7",
     seats: 50,
+    cover: "/photos/coworkings/worknation/cover.webp",
+    gallery: ["/photos/coworkings/worknation/gallery/gallery-1.webp", "/photos/coworkings/worknation/gallery/gallery-2.webp", "/photos/coworkings/worknation/gallery/gallery-3.webp", ]
   },
   {
     id: 3,
-    title: "Start Place",
+    title: "SOK",
     price: "от 600 ₽/день",
     address: "ул. Тверская, д.7",
     loadPercent: "30%",
-    spaceType: ["openspace"],
-    amenities: ["wifi"],
+    spaceType: ["openspace", "meeting-room"],
+    amenities: ["wifi", "printer", "parking"],
     rentTerm: "day",
     workSchedule: "5/2",
     seats: 20,
+
   },
   {
     id: 4,
