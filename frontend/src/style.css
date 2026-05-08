@@ -968,7 +968,7 @@ section:not(:last-child) {
 }
 
 .back-link svg {
-  transform: rotate(180deg) translateX(2px);
+  transform: translateX(-2px);
 }
 
 .coworking-page__hero-content {
@@ -1040,8 +1040,13 @@ section:not(:last-child) {
   transition: background-color .6s ease;
 }
 
+.gallery-btn__svg-icon.is-hidden {
+  visibility: hidden;
+}
+
 .gallery-btn__svg-icon {
   display: block;
+  visibility: visible;
   line-height: 1;
   color: white;
   flex-shrink: 0;
@@ -1050,7 +1055,7 @@ section:not(:last-child) {
 }
 
 .gallery-btn.prev svg {
-  transform: rotate(180deg) translateX(2px);
+  transform: translateX(-2px);
 }
 
 .gallery-btn.next svg {

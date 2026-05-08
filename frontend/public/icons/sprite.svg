@@ -1,19 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
     style="position:absolute;width:0;height:0;overflow:hidden">
     <symbol
-        id="arrow"
-        viewBox="0 0 16 16"
-        fill="none"
-    >
-        <path
-            d="M6 4L10 8L6 12"
-            stroke="currentColor"
-            stroke-width="1"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-        ></path>
-    </symbol>
-    <symbol
         id="parking"
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
