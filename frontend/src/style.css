@@ -292,7 +292,7 @@ section:not(:last-child) {
 }
 
 /* чтобы текст был поверх */
-.hero__content > *:not(.hero__overlay) {
+.hero__content>*:not(.hero__overlay) {
   position: relative;
   top: 1px;
   z-index: 2;
@@ -327,7 +327,7 @@ section:not(:last-child) {
 }
 
 .h2-title {
-  margin: 0 0 16px;
+  margin: 0 0 8px;
   font-size: 24px;
   font-weight: 500;
   line-height: 1.25;
@@ -545,13 +545,11 @@ section:not(:last-child) {
   transition: color 300ms ease;
 }
 
-.filter-dropdown__label:has(input:checked)
-  .filter-dropdown__coworking-type-title {
+.filter-dropdown__label:has(input:checked) .filter-dropdown__coworking-type-title {
   color: #0084ff;
 }
 
-.filter-dropdown__label:has(input:checked)
-  .filter-dropdown__coworking-type-desc {
+.filter-dropdown__label:has(input:checked) .filter-dropdown__coworking-type-desc {
   color: #000;
 }
 
@@ -652,7 +650,7 @@ section:not(:last-child) {
   height: 24px;
 }
 
-.view-btn + .view-btn {
+.view-btn+.view-btn {
   border-left: 1px solid var(--dark-gray);
 }
 
@@ -798,17 +796,13 @@ section:not(:last-child) {
   inset: 0;
   border-radius: 50%;
 
-  -webkit-mask: radial-gradient(
-    circle at center,
-    transparent calc(50% - var(--thickness)),
-    #000 calc(50% - var(--thickness) + 1px)
-  );
+  -webkit-mask: radial-gradient(circle at center,
+      transparent calc(50% - var(--thickness)),
+      #000 calc(50% - var(--thickness) + 1px));
 
-  mask: radial-gradient(
-    circle at center,
-    transparent calc(50% - var(--thickness)),
-    #000 calc(50% - var(--thickness) + 1px)
-  );
+  mask: radial-gradient(circle at center,
+      transparent calc(50% - var(--thickness)),
+      #000 calc(50% - var(--thickness) + 1px));
 }
 
 /* фон */
@@ -824,20 +818,16 @@ section:not(:last-child) {
   transform: rotate(0deg);
 
   -webkit-mask: conic-gradient(#000 calc(var(--progress) * 1%), transparent 0),
-    radial-gradient(
-      circle at center,
+    radial-gradient(circle at center,
       transparent calc(50% - var(--thickness)),
-      #000 calc(50% - var(--thickness) + 1px)
-    );
+      #000 calc(50% - var(--thickness) + 1px));
 
   -webkit-mask-composite: source-in;
 
   mask: conic-gradient(#000 calc(var(--progress) * 1%), transparent 0),
-    radial-gradient(
-      circle at center,
+    radial-gradient(circle at center,
       transparent calc(50% - var(--thickness)),
-      #000 calc(50% - var(--thickness) + 1px)
-    );
+      #000 calc(50% - var(--thickness) + 1px));
 
   mask-composite: intersect;
 }
@@ -1014,8 +1004,19 @@ section:not(:last-child) {
 
 .about-coworking .container,
 .amenities .container,
-.gallery .container {
+.gallery .container,
+.coworking-description .container {
   padding: 0 16px;
+}
+
+.about-coworking__info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.coworking-description .description {
+  color: var(--dark-gray);
 }
 
 .gallery-window {

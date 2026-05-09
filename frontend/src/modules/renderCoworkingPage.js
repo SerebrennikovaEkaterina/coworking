@@ -12,6 +12,7 @@ export function renderCoworkingPage() {
 
   renderHero(coworking);
   renderAboutCoworking(coworking);
+  renderCoworkingDescription(coworking);
   renderAmenities(coworking);
   renderGallery(coworking);
 }
@@ -28,6 +29,7 @@ function renderHero(coworking) {
 }
 
 function renderAboutCoworking(coworking) {
+
   const coworkingPrice = document.querySelector(".price");
   coworkingPrice.textContent = coworking.price;
 
@@ -36,9 +38,27 @@ function renderAboutCoworking(coworking) {
 
   const actions = document.querySelector(".about-coworking__actions");
   const visitLink = document.createElement("a");
+
   visitLink.className = "btn-text primary-button";
   visitLink.textContent = "посетить коворкинг";
+
   actions.appendChild(visitLink);
+}
+
+function renderCoworkingDescription(coworking) {
+
+  const section = document.querySelector(".coworking-description");
+
+  if (!coworking.description) {
+    return;
+  }
+
+  section.innerHTML = `
+  <div class="container">
+  <h2 class="h2-title">Об этом коворкинге</h2>
+  <p class="description">${coworking.description}</p>
+  </div>
+  `;
 }
 
 function renderAmenities(coworking) {
