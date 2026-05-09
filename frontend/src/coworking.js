@@ -4,3 +4,16 @@ import "./style.css";
 import { renderCoworkingPage } from "./modules/renderCoworkingPage.js";
 
 renderCoworkingPage();
+
+const backLink = document.getElementById("back-link");
+
+if (backLink) {
+    backLink.addEventListener('click', function(event) {
+        event.preventDefault(); 
+        if (window.history.length > 1) {
+            window.history.back();
+        } else {
+            window.location.href = '/';
+        }
+    });
+}

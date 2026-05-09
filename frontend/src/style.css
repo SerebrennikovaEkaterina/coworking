@@ -953,9 +953,9 @@ section:not(:last-child) {
   align-items: center;
   justify-content: center;
   background-color: var(--dark-gray) transparent;
-  border: 1px solid white;
+  border: 2px solid white;
   border-radius: 50px;
-  transition: background-color .6s ease;
+  transition: background-color .3s ease, border-color .3s ease;
 }
 
 .back-link__svg-icon {
@@ -963,12 +963,19 @@ section:not(:last-child) {
   line-height: 1;
   color: white;
   flex-shrink: 0;
-  width: 32px;
-  height: 32px;
+  transform: translateX(-2px);
+  width: 24px;
+  height: 24px;
+  transition: color .3s ease;
 }
 
-.back-link svg {
-  transform: translateX(-2px);
+.back-link:active {
+  background-color: var(--light-gray-background-10);
+  border-color: black;
+}
+
+.back-link:active .back-link__svg-icon {
+  color: black;
 }
 
 .coworking-page__hero-content {
@@ -1050,8 +1057,8 @@ section:not(:last-child) {
   line-height: 1;
   color: white;
   flex-shrink: 0;
-  width: 32px;
-  height: 32px;
+  width: 24px;
+  height: 24px;
 }
 
 .gallery-btn.prev svg {
