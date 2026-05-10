@@ -990,8 +990,8 @@ section:not(:last-child) {
 .amenity-icon {
   fill: currentColor;
   flex-shrink: 0;
-  height: 32px;
-  width: 32px;
+  height: 45px;
+  width: 45px;
 }
 
 .amenity-icon svg,
