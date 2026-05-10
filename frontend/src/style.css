@@ -273,7 +273,7 @@ section:not(:last-child) {
 .hero__content {
   position: relative;
   background-image: url(/photos/hero-list.png);
-  min-height: 184px;
+  height: clamp(184px, 25vw, 360px);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -986,7 +986,13 @@ section:not(:last-child) {
   flex-direction: column-reverse;
 }
 
+.amenities__container {
+  display: flex;
+  flex-direction: column;
+}
+
 .amenity-item {
+  color: var(--dark-gray);
   align-items: center;
   gap: 4px;
 }
