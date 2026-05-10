@@ -18,7 +18,7 @@ export function setState(newState) {
 
   localStorage.setItem("appState", JSON.stringify(updated));
 
-  console.log("💾 state saved:", updated);
+  console.log("state saved:", updated);
 
   return updated;
 }

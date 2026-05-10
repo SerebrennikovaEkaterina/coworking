@@ -199,30 +199,34 @@ section:not(:last-child) {
 .nav-link {
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: flex-start;
   color: var(--dark-gray);
-}
-
-.nav-link.active {
-  color: #3261ec;
+  transition: color .3s ease;
 }
 
 .nav-label {
   position: relative;
-  left: 6px;
+  color: var(--dark-gray);
   opacity: 0;
   transform: translateY(4px);
-  transition: 0.3s;
+  transition: transform .3s ease .3s, opacity .3s ease, color .3s ease;
 }
 
 .nav-link.active .nav-label {
+  color: #3261ec;
   opacity: 1;
   transform: translateY(0);
 }
 
 .nav-link .svg {
+  color: var(--dark-gray);
   width: 40px;
   height: 40px;
+  transition: color .3s ease;
+}
+
+.nav-link.active .svg {
+  color: #3261ec;
 }
 
 .header__container {
