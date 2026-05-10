@@ -1,6 +1,8 @@
 import { coworkings } from "../data.js";
 import { amenitiesMap } from "./configs/amenitiesMap.js";
 
+import { mapIcon } from "../assets/icons.js";
+
 export function renderCoworkingPage() {
   const params = new URLSearchParams(window.location.search);
 
@@ -29,12 +31,21 @@ function renderHero(coworking) {
 }
 
 function renderAboutCoworking(coworking) {
+  const aboutCoworkingInfo = document.querySelector(".about-coworking__info");
 
-  const coworkingPrice = document.querySelector(".price");
-  coworkingPrice.textContent = coworking.price;
+  if (coworking.address) {
+    const coworkingAddressContainer = document.createElement("div");
+    coworkingAddressContainer.className = "address-container";
+    aboutCoworkingInfo.append(coworkingAddressContainer);
+    coworkingAddressContainer.innerHTML = `${mapIcon}<div class="address">${coworking.address}</div>`;
+  }
 
-  const coworkingAddress = document.querySelector(".address");
-  coworkingAddress.textContent = coworking.address;
+  if (coworking.price) {
+    const coworkingPrice = document.createElement("div");
+    coworkingPrice.className = "price";
+    aboutCoworkingInfo.append(coworkingPrice);
+    coworkingPrice.textContent = `${coworking.price}`;
+  }
 
   const actions = document.querySelector(".about-coworking__actions");
   const visitLink = document.createElement("a");
@@ -46,7 +57,6 @@ function renderAboutCoworking(coworking) {
 }
 
 function renderCoworkingDescription(coworking) {
-
   const section = document.querySelector(".coworking-description");
 
   if (!coworking.description) {

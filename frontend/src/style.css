@@ -1015,7 +1015,19 @@ section:not(:last-child) {
 .about-coworking__info {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 4px;
+}
+
+.about-coworking__info .address-container {
+  color: var(--dark-gray);
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.about-coworking__info .price {
+  padding-left: 26px;
+  color: var(--dark-gray);
 }
 
 .coworking-description .description {
