@@ -147,19 +147,20 @@ section:not(:last-child) {
 
 /* TEXT-SIZE */
 
-.card__adress {
+.card__address {
   margin: 0 0 4px;
   font-size: var(--medium-text);
   line-height: 1.25;
+  color: var(--dark-gray);
+  font-style: normal;
+}
+
+.view-grid .card__address {
   display: -webkit-box;
   -webkit-line-clamp: 2;
-  /* максимум 2 строки */
   -webkit-box-orient: vertical;
   overflow: hidden;
   min-height: calc(1.25em * 2);
-  /* фиксируем высоту под 2 строки */
-  color: var(--dark-gray);
-  font-style: normal;
 }
 
 .btn-text {
