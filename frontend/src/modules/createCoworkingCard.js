@@ -23,7 +23,7 @@ export function createCoworkingCard(coworking) {
   h3Title.textContent = coworking.title;
 
   const address = document.createElement("p");
-  address.className = "card__adress";
+  address.className = "card__address";
   address.textContent = coworking.address;
 
   const price = document.createElement("p");
