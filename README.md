@@ -1,0 +1,8 @@
+- coworking catalog rendering
+- filtering and search
+- grid/list view modes
+- dynamic coworking pages
+- image gallery slider
+- favorites system with localStorage persistence
+- reusable UI components
+- responsive layout
