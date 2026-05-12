@@ -10,7 +10,7 @@ export function initFavoriteButtons(onToggle) {
             toggleFavorite(id);
             button.classList.toggle('active');
             if (onToggle) {
-                onToggle();
+                onToggle(button);
             }
         })
 

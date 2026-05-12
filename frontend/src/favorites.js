@@ -1,4 +1,4 @@
-import "./normalize.css"
+import "./normalize.css";
 import "./style.css";
 
 import { initNavigation } from "./modules/navigation";
@@ -10,25 +10,17 @@ import { createCoworkingCard } from "./modules/createCoworkingCard.js";
 import { initFavoriteButtons } from "./modules/favoritehandlers.js";
 
 loadComponent("#nav-container", "/components/nav.html").then(() => {
-    initNavigation();
+  initNavigation();
 });
 
 loadComponent("#header-container", "/components/header.html");
 
-const favoriteIds = getFavorites();
-
-
-const favoriteCoworkings = coworkings.filter((item) => favoriteIds.includes(item.id));
-
-const emptyMessage = "Ничего не найдено, попробуйте добавить коворкинг в избранное"
-
-renderCards(favoriteCoworkings, createCoworkingCard, emptyMessage);
+const emptyMessage =
+  "Ничего не найдено, попробуйте добавить коворкинг в избранное";
 
 const container = document.querySelector(".container");
 
 container.classList.add("list-view");
-
-initFavoriteButtons(renderFavorites);
 
 function renderFavorites() {
   const favoriteIds = getFavorites();
@@ -37,11 +29,17 @@ function renderFavorites() {
     favoriteIds.includes(item.id)
   );
 
-  renderCards(
-    favoriteCoworkings,
-    createCoworkingCard,
-    emptyMessage
-  );
+  renderCards(favoriteCoworkings, createCoworkingCard, emptyMessage);
 
-  initFavoriteButtons(renderFavorites);
+  initFavoriteButtons((button) => {
+    const card = button.closest(".card");
+
+    card.remove();
+    const cards = document.querySelectorAll(".coworking-card");
+    if (cards.length === 0) {
+      renderFavorites();
+    }
+  });
 }
+
+renderFavorites();
