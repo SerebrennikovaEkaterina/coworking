@@ -41,6 +41,7 @@ a {
 button {
   font-family: inherit;
   font-size: inherit;
+  cursor: pointer;
 }
 
 button:focus-visible,

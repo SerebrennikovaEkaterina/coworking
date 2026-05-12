@@ -28,5 +28,20 @@ const container = document.querySelector(".container");
 
 container.classList.add("list-view");
 
-initFavoriteButtons(renderCards(favoriteCoworkings, createCoworkingCard, emptyMessage));
+initFavoriteButtons(renderFavorites);
 
+function renderFavorites() {
+  const favoriteIds = getFavorites();
+
+  const favoriteCoworkings = coworkings.filter((item) =>
+    favoriteIds.includes(item.id)
+  );
+
+  renderCards(
+    favoriteCoworkings,
+    createCoworkingCard,
+    emptyMessage
+  );
+
+  initFavoriteButtons(renderFavorites);
+}
