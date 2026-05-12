@@ -8,24 +8,25 @@
 //     });
 // }
 
-export function renderCards(data, createCard) {
-    const container = document.querySelector(".cards");
-    if (!container) return;
-  
-    container.innerHTML = ""; //  очищаем
+export function renderCards(data, createCard, emptyText) {
+  const container = document.querySelector(".cards");
+  if (!container) return;
 
-    if (!data.length) {
-      container.innerHTML = `
-        <div class="empty-state">
-          Ничего не найдено <br/>
-          Попробуйте ослабить фильтры
-        </div>
-      `;
-      return;
-    }
-  
-    data.forEach(item => {
-      const card = createCard(item);
-      container.appendChild(card);
-    });
+  container.innerHTML = ""; //  очищаем
+
+  if (!data.length) {
+
+    const emptyMessage = document.createElement('div');
+    emptyMessage.className = "empty-message";
+    emptyMessage.textContent = `${emptyText}`;
+
+    container.append(emptyMessage);
+
+    return;
   }
+
+  data.forEach(item => {
+    const card = createCard(item);
+    container.appendChild(card);
+  });
+}

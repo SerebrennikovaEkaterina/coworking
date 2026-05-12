@@ -1,6 +1,6 @@
 import { toggleFavorite } from "./favorites";
 
-export function initFavoriteButtons() {
+export function initFavoriteButtons(onToggle) {
     const favoriteButtons = document.querySelectorAll(".favorite-btn");
 
     favoriteButtons.forEach((button) => {
@@ -9,7 +9,11 @@ export function initFavoriteButtons() {
 
             toggleFavorite(id);
             button.classList.toggle('active');
+            if (onToggle) {
+                onToggle();
+            }
         })
 
     })
+
 }

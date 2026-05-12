@@ -35,7 +35,9 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("state",state );
     console.log("result",result );
 
-    renderCards(result, createCoworkingCard);
+    const emptyMessage = "Ничего не найдено, попробуйте ослабить фильтры"
+
+    renderCards(result, createCoworkingCard, emptyMessage);
     initFavoriteButtons();
   }
 

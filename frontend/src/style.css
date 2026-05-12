@@ -1050,6 +1050,10 @@ section:not(:last-child) {
   padding: 0 16px;
 }
 
+.favorites-container {
+  padding: 8px;
+}
+
 .about-coworking__info {
   display: flex;
   flex-direction: column;
