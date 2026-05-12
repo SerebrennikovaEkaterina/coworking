@@ -2,8 +2,10 @@ import "./normalize.css"
 import "./style.css";
 
 import { renderCoworkingPage } from "./modules/renderCoworkingPage.js";
+import { initFavoriteButtons } from "./modules/favoritehandlers.js";
 
 renderCoworkingPage();
+initFavoriteButtons();
 
 const backLink = document.getElementById("back-link");
 

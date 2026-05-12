@@ -36,3 +36,13 @@ A3.2 3.2 0 1 0 12 5.8
 />
 </svg>`;
 
+export const favoriteIcon = `<svg class="favorite-icon" width="24"
+          height="24" viewBox="0 0 40 40" fill="none">
+          <path
+            d="M20 31c-.4 0-.8-.15-1.1-.45l-8.2-8.6C9.1 20.6 8 18.9 8 17c0-3.9 3-7 6.7-7 2 0 3.9.9 5.3 2.4C21.4 10.9 23.3 10 25.3 10 29 10 32 13.1 32 17c0 1.9-1.1 3.6-2.7 5l-8.2 8.6c-.3.3-.7.45-1.1.45Z"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>`;

@@ -1,7 +1,12 @@
 import { coworkings } from "../data.js";
+
+import { toggleFavorite, isFavorite, } from "./favorites.js";
+
 import { amenitiesMap } from "./configs/amenitiesMap.js";
 
 import { mapIcon } from "../assets/icons.js";
+
+import { favoriteIcon } from "../assets/icons.js";
 
 export function renderCoworkingPage() {
   const params = new URLSearchParams(window.location.search);
@@ -20,14 +25,27 @@ export function renderCoworkingPage() {
 }
 
 function renderHero(coworking) {
-  const coworkingCover = document.querySelector(
+  const favorite = isFavorite(coworking.id);
+
+  const coworkingPageHeroContent = document.querySelector(
     ".coworking-page__hero-content"
   );
-  coworkingCover.style.backgroundImage = `url(${coworking.cover})`;
+  coworkingPageHeroContent.style.backgroundImage = `url(${coworking.cover})`;
   console.log("coworking.cover", coworking.cover);
 
   const coworkingTitle = document.querySelector(".h1-title-coworking-page");
   coworkingTitle.textContent = coworking.title;
+
+  const favoriteBtn = document.createElement("button");
+  favoriteBtn.className = "favorite-btn flex coworking-page__hero-favorite-btn";
+  favoriteBtn.innerHTML = `${favoriteIcon}`;
+  favoriteBtn.dataset.id = `${coworking.id}`;
+  favoriteBtn.setAttribute("aria-label", "Добавить в избранное");
+
+  if (favorite) {
+    favoriteBtn.classList.add("active")
+  }
+  coworkingPageHeroContent.append(favoriteBtn);
 }
 
 function renderAboutCoworking(coworking) {

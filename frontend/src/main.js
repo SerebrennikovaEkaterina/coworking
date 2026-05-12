@@ -13,6 +13,7 @@ import { initFilters } from "./modules/filters.js";
 import { initDropdowns } from "./modules/dropdown.js";
 import { filterData } from "./modules/filterData.js";
 import { getFilterState } from "./modules/filterState.js";
+import { initFavoriteButtons } from "./modules/favoritehandlers.js";
 
 import "./normalize.css";
 import "./style.css";
@@ -35,6 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("result",result );
 
     renderCards(result, createCoworkingCard);
+    initFavoriteButtons();
   }
 
   // одна система

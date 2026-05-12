@@ -1,8 +1,12 @@
-import { arrowIcon } from "../assets/icons.js";
-import { itineraryIcon } from "../assets/icons.js";
+import { arrowIcon, favoriteIcon, itineraryIcon } from "../assets/icons.js";
+
+import { toggleFavorite, isFavorite, } from "./favorites.js";
 
 
 export function createCoworkingCard(coworking) {
+
+  const favorite = isFavorite(coworking.id);
+
   const card = document.createElement("li");
   card.className = "list-item card";
 
@@ -12,11 +16,25 @@ export function createCoworkingCard(coworking) {
   const info2 = document.createElement("div");
   info2.className = "coworking-info-2 flex";
 
+  const info3 = document.createElement("div");
+  info3.className = "coworking-info-3 flex";
+
   const primaryBtn = document.createElement("button");
   primaryBtn.className = "primary-button btn-text";
   primaryBtn.textContent = "посетить";
 
-  card.append(info1, info2, primaryBtn);
+  const favoriteBtn = document.createElement("button");
+  favoriteBtn.className = "favorite-btn flex";
+  favoriteBtn.innerHTML = `${favoriteIcon}`;
+  favoriteBtn.dataset.id=`${coworking.id}`;
+  favoriteBtn.setAttribute("aria-label", "Добавить в избранное");
+
+  if (favorite) {
+    favoriteBtn.classList.add("active")
+  }
+
+  info3.append(favoriteBtn, primaryBtn);
+  card.append(info1, info2, info3);
 
   const h3Title = document.createElement("h3");
   h3Title.className = "h3-title";
@@ -34,9 +52,7 @@ export function createCoworkingCard(coworking) {
   coworkingLink.className = "card__link flex btn-text";
   coworkingLink.href = `./coworking.html?id=${coworking.id}`;
 
-  coworkingLink.innerHTML = `подробнее
-  ${arrowIcon}
-`;
+  coworkingLink.innerHTML = `подробнее ${arrowIcon}`;
 
   info1.append(h3Title, address, price, coworkingLink);
 
@@ -60,6 +76,7 @@ export function createCoworkingCard(coworking) {
 
   const btnItinerary = document.createElement("button");
   btnItinerary.className = "button itinerary flex";
+  btnItinerary.setAttribute("aria-label", "проложить маршрут");
 
   btnItinerary.innerHTML = `
   ${itineraryIcon}

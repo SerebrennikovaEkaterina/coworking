@@ -737,6 +737,12 @@ section:not(:last-child) {
   padding-right: 8px;
 }
 
+.coworking-info-3 {
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 16px;
+}
+
 /* .indicator {
   position: relative;
   width: 40px;
@@ -938,6 +944,27 @@ section:not(:last-child) {
   color: white;
   border: 0;
   background: linear-gradient(270deg, #1c3786 0%, #3261ec 100%);
+}
+
+.favorite-btn {
+    justify-content: center;
+    align-items: center;
+    background-color: #f3f4f4;
+    border: 0;
+    color:var(--dark-gray);
+    border-radius: 8px;
+    width: 44px;
+    height: 44px;
+}
+
+.favorite-btn.coworking-page__hero-favorite-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+
+.favorite-btn.active .favorite-icon {
+  fill: currentColor;
 }
 
 .back-link {
