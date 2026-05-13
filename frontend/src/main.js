@@ -27,14 +27,13 @@ document.addEventListener("DOMContentLoaded", () => {
   function updateUI() {
     const state = getFilterState();
     const result = filterData(coworkings, state);
-    console.log("state",state );
-    console.log("result",result );
+    console.log("state", state);
+    console.log("result", result);
 
     const emptyState = {
-  text: "Ничего не найдено, попробуйте ослабить фильтры",
-};
-
-    const emptyMessage = "Ничего не найдено, попробуйте ослабить фильтры"
+      title: "Ничего не найдено,",
+      text: "попробуйте ослабить фильтры",
+    };
 
     renderCards(result, createCoworkingCard, emptyState);
     initFavoriteButtons();

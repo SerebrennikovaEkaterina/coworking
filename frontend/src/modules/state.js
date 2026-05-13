@@ -1,5 +1,4 @@
 const DEFAULT_STATE = {
-  page: "index",
   view: "list",
 };
 

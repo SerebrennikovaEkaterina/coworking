@@ -14,7 +14,7 @@ export function initNavigation() {
 
   links.forEach(link => {
     link.addEventListener("click", e => {
-      
+
       const page = link.dataset.page;
 
       if (!page) return;
@@ -26,9 +26,6 @@ export function initNavigation() {
 
       // добавляем active текущей
       link.classList.add("active");
-
-      // сохраняем состояние
-      setState({ page });
 
       // ждём завершения анимации
       setTimeout(() => {
