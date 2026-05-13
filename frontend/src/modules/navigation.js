@@ -14,11 +14,12 @@ export function initNavigation() {
 
   links.forEach(link => {
     link.addEventListener("click", e => {
-      e.preventDefault();
-
+      
       const page = link.dataset.page;
 
       if (!page) return;
+
+      e.preventDefault();
 
       // убираем active у всех
       links.forEach(l => l.classList.remove("active"));

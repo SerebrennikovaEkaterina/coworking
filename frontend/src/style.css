@@ -120,7 +120,7 @@ a:focus-visible {
   font-display: swap;
 }
 
-.body {
+body {
   margin: 0 auto;
   min-width: 380px;
   min-height: 100vh;

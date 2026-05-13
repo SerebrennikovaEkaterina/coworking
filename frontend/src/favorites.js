@@ -15,8 +15,12 @@ loadComponent("#nav-container", "/components/nav.html").then(() => {
 
 loadComponent("#header-container", "/components/header.html");
 
-const emptyMessage =
-  "Ничего не найдено, попробуйте добавить коворкинг в избранное";
+const emptyState = {
+  title: "В избранном ничего нет",
+  text: "Попробуйте дабавить коворкинг в избранное",
+  buttonText: "Выбрать коворкинг",
+  buttonLink: "/index.html"
+};
 
 const container = document.querySelector(".container");
 
@@ -29,7 +33,7 @@ function renderFavorites() {
     favoriteIds.includes(item.id)
   );
 
-  renderCards(favoriteCoworkings, createCoworkingCard, emptyMessage);
+  renderCards(favoriteCoworkings, createCoworkingCard, emptyState);
 
   initFavoriteButtons((button) => {
     const card = button.closest(".card");

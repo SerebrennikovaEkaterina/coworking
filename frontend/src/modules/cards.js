@@ -8,7 +8,7 @@
 //     });
 // }
 
-export function renderCards(data, createCard, emptyText) {
+export function renderCards(data, createCard, emptyState) {
   const container = document.querySelector(".cards");
   if (!container) return;
 
@@ -18,7 +18,22 @@ export function renderCards(data, createCard, emptyText) {
 
     const emptyMessage = document.createElement('div');
     emptyMessage.className = "empty-message";
-    emptyMessage.textContent = `${emptyText}`;
+    emptyMessage.innerHTML = `
+  <h2 class="h2-title">${emptyState.title}</h2>
+  <p>${emptyState.text}</p>
+
+  ${emptyState.buttonText
+        ? `
+        <a
+          href="${emptyState.buttonLink}"
+          class="primary-button"
+        >
+          ${emptyState.buttonText}
+        </a>
+      `
+        : ""
+      }
+`;;
 
     container.append(emptyMessage);
 

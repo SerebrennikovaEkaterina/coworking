@@ -23,11 +23,6 @@ const state = getState();
 const currentPage =
   window.location.pathname.split("/").pop().replace(".html", "") || "index";
 
-// редирект
-if (currentPage === "index" && state.page && state.page !== "index") {
-  window.location.replace(`${state.page}.html`);
-}
-
 document.addEventListener("DOMContentLoaded", () => {
   function updateUI() {
     const state = getFilterState();
@@ -35,9 +30,13 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("state",state );
     console.log("result",result );
 
+    const emptyState = {
+  text: "Ничего не найдено, попробуйте ослабить фильтры",
+};
+
     const emptyMessage = "Ничего не найдено, попробуйте ослабить фильтры"
 
-    renderCards(result, createCoworkingCard, emptyMessage);
+    renderCards(result, createCoworkingCard, emptyState);
     initFavoriteButtons();
   }
 
