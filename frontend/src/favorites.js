@@ -2,7 +2,7 @@ import "./normalize.css";
 import "./style.css";
 
 import { initNavigation } from "./modules/navigation";
-import { coworkings } from "./data";
+import { getCoworkings } from "./modules/api";
 import { getFavorites } from "./modules/favorites";
 import { renderCards } from "./modules/cards";
 import { loadComponent } from "./modules/loadComponent";
@@ -26,7 +26,10 @@ const container = document.querySelector(".container");
 
 container.classList.add("list-view");
 
-function renderFavorites() {
+async function renderFavorites() {
+
+  const coworkings = await getCoworkings();
+
   const favoriteIds = getFavorites();
 
   const favoriteCoworkings = coworkings.filter((item) =>

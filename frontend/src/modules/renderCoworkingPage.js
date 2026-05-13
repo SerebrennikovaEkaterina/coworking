@@ -1,4 +1,4 @@
-import { coworkings } from "../data.js";
+import { getCoworkings } from "./api.js";
 
 import { toggleFavorite, isFavorite, } from "./favorites.js";
 
@@ -8,7 +8,10 @@ import { mapIcon } from "../assets/icons.js";
 
 import { favoriteIcon } from "../assets/icons.js";
 
-export function renderCoworkingPage() {
+export async function renderCoworkingPage() {
+
+  const coworkings = await getCoworkings();
+
   const params = new URLSearchParams(window.location.search);
 
   const id = Number(params.get("id"));

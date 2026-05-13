@@ -1,6 +1,5 @@
 // document.querySelector('#app').innerHTML = `
-// `
-import { coworkings } from "./data.js";
+
 import { createCoworkingCard } from "./modules/createCoworkingCard.js";
 import { initTabs } from "./modules/tabs.js";
 import { initNavigation } from "./modules/navigation.js";
@@ -14,6 +13,7 @@ import { initDropdowns } from "./modules/dropdown.js";
 import { filterData } from "./modules/filterData.js";
 import { getFilterState } from "./modules/filterState.js";
 import { initFavoriteButtons } from "./modules/favoritehandlers.js";
+import { getCoworkings } from "./modules/api.js";
 
 import "./normalize.css";
 import "./style.css";
@@ -23,28 +23,36 @@ const state = getState();
 const currentPage =
   window.location.pathname.split("/").pop().replace(".html", "") || "index";
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
+  const coworkings =
+    await getCoworkings();
+
   function updateUI() {
     const state = getFilterState();
-    const result = filterData(coworkings, state);
-    console.log("state", state);
-    console.log("result", result);
+
+    const result = filterData(
+      coworkings,
+      state
+    );
 
     const emptyState = {
       title: "Ничего не найдено,",
       text: "попробуйте ослабить фильтры",
     };
 
-    renderCards(result, createCoworkingCard, emptyState);
+    renderCards(
+      result,
+      createCoworkingCard,
+      emptyState
+    );
+
     initFavoriteButtons();
   }
 
-  // одна система
   initSearch(updateUI);
   initFilters(updateUI);
   initDropdowns();
 
-  // первый рендер
   updateUI();
 
   // форма
