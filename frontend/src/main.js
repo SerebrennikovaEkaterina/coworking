@@ -136,4 +136,15 @@ toggle.addEventListener("click", () => {
     "filters-toggle--is-active",
     !isOpen
   );
+
+const filtersPanel = document.querySelector('.filters-panel');
+
+if (!isOpen) {
+    setTimeout(() => {
+  panel.scrollIntoView({
+    behavior: "smooth",
+    block: "start",
+  });
+}, 200);
+  }
 });
