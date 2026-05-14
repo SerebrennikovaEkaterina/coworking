@@ -398,6 +398,60 @@ section:not(:last-child) {
 
 /* filters */
 
+.filters-section .container {
+  position: relative;
+  background-color: #f3f4f4;
+}
+
+.filters-toggle {
+  position: relative;
+  left: -16px;
+  ;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: transparent;
+  border: 0;
+  padding: 8px 32px 10px 16px;
+  z-index: 11;
+}
+
+.filters-section__arrow {
+  transform: rotate(90deg) translateX(-2px);
+  color: inherit;
+  transition: transform 300ms ease;
+}
+
+.filters-toggle--is-active .filters-section__arrow {
+  transform: rotate(-90deg) translateX(4px);
+}
+
+.filters-panel {
+  position: absolute;
+  top: calc(100% - 8px);
+  left: 0;
+  opacity: 0;
+  padding: 8px;
+  visibility: hidden;
+  justify-content: center;
+  transform: translateY(-12px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    visibility 0.3s ease;
+  z-index: 10;
+  background-color: #f3f4f4;
+ box-shadow:
+  0 18px 20px -16px rgba(0,0,0,0.3);
+
+}
+
+.filters-panel.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
 .filter {
   position: relative;
 }
@@ -571,6 +625,7 @@ section:not(:last-child) {
   padding: 8px 0;
   justify-content: center;
   gap: 4px;
+  flex-grow: 1;
 }
 
 .clear-all-btn {
@@ -594,12 +649,6 @@ section:not(:last-child) {
 .search-section .container,
 .filters-section .container {
   padding: 0 16px;
-}
-
-.filters-section {
-  background-color: #f3f4f4;
-  padding-top: 4px;
-  padding-bottom: 4px;
 }
 
 .view-switcher-wrapper {
@@ -948,14 +997,14 @@ section:not(:last-child) {
 }
 
 .favorite-btn {
-    justify-content: center;
-    align-items: center;
-    background-color: #f3f4f4;
-    border: 0;
-    color:var(--dark-gray);
-    border-radius: 8px;
-    width: 44px;
-    height: 44px;
+  justify-content: center;
+  align-items: center;
+  background-color: #f3f4f4;
+  border: 0;
+  color: var(--dark-gray);
+  border-radius: 8px;
+  width: 44px;
+  height: 44px;
 }
 
 .favorite-btn.coworking-page__hero-favorite-btn {
@@ -986,7 +1035,7 @@ section:not(:last-child) {
   line-height: 1;
   color: white;
   flex-shrink: 0;
-  }
+}
 
 .back-link svg {
   transform: translateX(-2px);

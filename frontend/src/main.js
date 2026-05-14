@@ -110,3 +110,30 @@ if (hasVisited) {
     }, remaining);
   });
 }
+
+const toggle =
+  document.querySelector(".filters-toggle");
+
+const panel =
+  document.getElementById("filters-panel");
+
+toggle.addEventListener("click", () => {
+  const isOpen =
+    toggle.getAttribute("aria-expanded")
+    === "true";
+
+  toggle.setAttribute(
+    "aria-expanded",
+    String(!isOpen)
+  );
+
+  panel.classList.toggle(
+    "is-open",
+    !isOpen
+  );
+
+  toggle.classList.toggle(
+    "filters-toggle--is-active",
+    !isOpen
+  );
+});
