@@ -49,6 +49,10 @@ a:focus-visible {
   outline: 1px solid #ff00b8;
 }
 
+button, a, input, textarea {
+    -webkit-tap-highlight-color: transparent;
+}
+
 .list-reset {
   margin: 0;
   padding: 0;
