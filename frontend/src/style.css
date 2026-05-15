@@ -50,8 +50,11 @@ a:focus-visible {
   outline: 1px solid #ff00b8;
 }
 
-button, a, input, textarea {
-    -webkit-tap-highlight-color: transparent;
+button,
+a,
+input,
+textarea {
+  -webkit-tap-highlight-color: transparent;
 }
 
 .list-reset {
@@ -354,10 +357,12 @@ section:not(:last-child) {
 
 /* search */
 
-.search {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+.catalog-controls {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 1000;
 }
 
 .search__field {
@@ -1231,8 +1236,8 @@ body.is-loading .filter-dropdown {
   }
 
   .filter-dropdown--right {
-  right: 0;
-  left: auto;
-}
+    right: 0;
+    left: auto;
+  }
 
 }
