@@ -27,6 +27,7 @@ html {
   line-height: 1.25;
   box-sizing: border-box;
   height: 100%;
+  overflow-x: hidden;
 }
 
 img {
@@ -132,6 +133,7 @@ body {
   font-size: var(--medium-text);
   font-weight: 400;
   background-color: #f8f9f9;
+  overflow-x: hidden;
 }
 
 .visually-hidden {
@@ -533,6 +535,7 @@ section:not(:last-child) {
   display: block;
   position: absolute;
   width: 100%;
+  max-width: calc(100vw - 32px);
   top: 0;
   left: 0;
   opacity: 0;

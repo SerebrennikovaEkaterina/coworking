@@ -3,11 +3,14 @@ import { setState, getState } from "./state.js";
 export function initNavigation() {
   const links = document.querySelectorAll(".nav-link");
 
-  // восстановление active после загрузки страницы
-  const state = getState();
+  const currentPage =
+    window.location.pathname
+      .split("/")
+      .pop()
+      .replace(".html", "") || "index";
 
   const activeLink = document.querySelector(
-    `[data-page="${state.page}"]`
+    `[data-page="${currentPage}"]`
   );
 
   activeLink?.classList.add("active");
